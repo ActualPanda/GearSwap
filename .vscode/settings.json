@@ -45,7 +45,8 @@
     "pet_midcast_custom",
     "log",
     "DualWield",
-    "TwoHand"
+    "TwoHand",
+    "S"
   ],
   "stylua.targetReleaseVersion": "latest",
   "Lua.diagnostics.disable": [
