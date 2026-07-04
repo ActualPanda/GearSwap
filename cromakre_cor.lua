@@ -508,7 +508,7 @@ function get_sets()
   -- Job Abilities
   sets.JA = {}
   sets.JA['Wild Card'] = {
-    feet = { name = 'Lanun Bottes +2', augments = { 'Enhances "Wild Card" effect' } },
+    feet = { name = 'Lanun Bottes +3', augments = { 'Enhances "Wild Card" effect' } },
   }
   sets.JA['Phantom Roll'] = {}
   sets.JA['Random Deal'] = {
