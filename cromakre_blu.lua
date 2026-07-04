@@ -44,7 +44,7 @@ BlueSkill = S({
 BlueTank = S({})
 
 --Weapons specific to Blue Mage
-state.WeaponMode:options('Naegling', 'Black Halo')
+state.WeaponMode:options('Naegling', 'Black Halo', 'Unlocked')
 -- state.WeaponMode:options('Almace', 'Naegling', 'Black Halo', 'Cleave')
 state.WeaponMode:set('Naegling')
 
@@ -77,6 +77,11 @@ function get_sets()
     main = 'Kaja Rod',
     sub = 'Machaera +2',
     -- sub = "Bunzi's Rod",
+  }
+
+  sets.Weapons['Unlocked'] = {
+    main = '',
+    sub = '',
   }
 
   -- sets.Weapons['Cleave'] = {
@@ -160,7 +165,7 @@ function get_sets()
     feet = { name = 'Herculean Boots', augments = { '"Triple Atk."+3', 'VIT+5', 'Accuracy+9' } },
     neck = 'Lissome Necklace',
     waist = 'Sailfi Belt +1',
-    left_ear = 'Brutal Earring',
+    left_ear = 'Eabani Earring',
     right_ear = 'Alabaster Earring',
     left_ring = 'Defending Ring',
     right_ring = 'Petrov Ring',
@@ -173,7 +178,6 @@ function get_sets()
     -- feet = 'Malignance Boots',
     -- neck = { name = 'Mirage Stole +2', augments = { 'Path: A' } },
     -- waist = 'Reiki Yotai',
-    -- left_ear = 'Eabani Earring',
     -- right_ear = {
     --   name = 'Hashi. Earring +1',
     --   augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+15', 'Mag. Acc.+15', '"Dbl.Atk."+5' },
@@ -365,7 +369,7 @@ function get_sets()
     -- legs = { name = 'Telchine Braconi', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- feet = { name = 'Telchine Pigaches', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- neck = "Incanter's Torque",
-    -- waist = 'Olympus Sash',
+    waist = 'Olympus Sash',
     -- left_ear = 'Mimir Earring',
     -- right_ear = { name = 'Odnowa Earring +1', augments = { 'Path: A' }, priority = 1 },
     -- left_ring = { name = 'Stikini Ring +1', bag = 'wardrobe1' },
@@ -392,12 +396,12 @@ function get_sets()
     -- hands = 'Hashi. Bazu. +3',
     -- legs = 'Hashishin Tayt +3',
     -- feet = 'Hashi. Basmak +3',
-    -- neck = 'Sanctity Necklace',
+    neck = 'Sanctity Necklace',
     -- waist = "Orpheus's Sash",
-    -- left_ear = 'Friomisi Earring',
+    left_ear = 'Friomisi Earring',
     -- right_ear = 'Regal Earring',
     -- left_ring = 'Shiva Ring +1',
-    -- right_ring = { name = 'Metamor. Ring +1', augments = { 'Path: A' } },
+    right_ring = { name = 'Metamor. Ring +1', augments = { 'Path: A' } },
     -- back = {
     --   name = "Rosmerta's Cape",
     --   augments = {
@@ -572,14 +576,15 @@ function get_sets()
   sets.WS['Expiacion'] = {
     -- ammo = { name = 'Coiste Bodhar', augments = { 'Path: A' } },
     -- head = 'Hashishin Kavuk +3',
-    -- body = { name = 'Nyame Mail', augments = { 'Path: B' } },
-    -- hands = { name = 'Nyame Gauntlets', augments = { 'Path: B' } },
-    -- legs = { name = 'Nyame Flanchard', augments = { 'Path: B' } },
-    -- feet = { name = 'Nyame Sollerets', augments = { 'Path: B' } },
+    head = { name = 'Nyame Mail', augments = { 'Path: B' } },
+    body = { name = 'Nyame Mail', augments = { 'Path: B' } },
+    hands = { name = 'Nyame Gauntlets', augments = { 'Path: B' } },
+    legs = { name = 'Nyame Flanchard', augments = { 'Path: B' } },
+    feet = { name = 'Nyame Sollerets', augments = { 'Path: B' } },
     -- neck = { name = 'Mirage Stole +2', augments = { 'Path: A' } },
     -- waist = { name = 'Sailfi Belt +1', augments = { 'Path: A' } },
-    -- left_ear = { name = 'Moonshade Earring', augments = { 'Attack+4', 'TP Bonus +250' } },
-    -- right_ear = 'Ishvara Earring',
+    left_ear = { name = 'Moonshade Earring', augments = { 'Attack+4', 'TP Bonus +250' } },
+    right_ear = 'Ishvara Earring',
     -- left_ring = "Epaminondas's Ring",
     -- right_ring = "Epona's Ring",
     -- back = {
