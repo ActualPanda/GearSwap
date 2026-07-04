@@ -336,16 +336,17 @@ function get_sets()
 
   -- Cure Set
   sets.Midcast.Cure = {
-    -- ammo = 'Staunch Tathlum +1',
-    -- head = { name = 'Nyame Helm', augments = { 'Path: B' } },
+    ammo = 'Staunch Tathlum',
+    head = { name = 'Nyame Helm', augments = { 'Path: B' } },
     -- body = 'Hashishin Mintan +3',
     -- hands = { name = 'Telchine Gloves', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- legs = 'Hashishin Tayt +3',
     -- feet = { name = "Medium's Sabots", augments = { 'MP+50', 'MND+10', '"Conserve MP"+7', '"Cure" potency +5%' } },
     -- neck = "Incanter's Torque",
-    -- waist = 'Gishdubar Sash',
+    waist = 'Gishdubar Sash',
     -- left_ear = 'Mendi. Earring',
     -- right_ear = 'Hashi. Earring +1',
+    left_ring = "Naji's Loop",
     -- left_ring = 'Lebeche Ring',
     -- right_ring = "Menelaus's Ring",
     -- back = {
@@ -390,24 +391,36 @@ function get_sets()
   sets.Midcast.Enfeebling = {}
 
   sets.Midcast.Nuke = {
+    ammo = 'Ghastly Tathlum +1',
+    head = 'Jhakri Coronal +2',
+    body = 'Jhakri Robe +2',
+    hands = 'Jhakri Cuffs +2',
+    legs = 'Jhakri Slops +2',
+    feet = 'Jhakri Pigaches +2',
+    neck = 'Sanctity Necklace',
+    waist = 'Witful Belt',
+    left_ear = 'Friomisi Earring',
+    right_ear = 'Novio Earring',
+    left_ring = 'Metamor. Ring +1',
+    right_ring = 'Shiva Ring',
     -- ammo = 'Pemphredo Tathlum',
     -- head = 'Hashishin Kavuk +3',
     -- body = 'Hashishin Mintan +3',
     -- hands = 'Hashi. Bazu. +3',
     -- legs = 'Hashishin Tayt +3',
     -- feet = 'Hashi. Basmak +3',
-    neck = 'Sanctity Necklace',
+    -- neck = 'Sanctity Necklace',
     -- waist = "Orpheus's Sash",
-    left_ear = 'Friomisi Earring',
+    -- left_ear = 'Friomisi Earring',
     -- right_ear = 'Regal Earring',
     -- left_ring = 'Shiva Ring +1',
-    right_ring = { name = 'Metamor. Ring +1', augments = { 'Path: A' } },
+    -- right_ring = { name = 'Metamor. Ring +1', augments = { 'Path: A' } },
     -- back = {
     --   name = "Rosmerta's Cape",
     --   augments = {
     --     'INT+20',
     --     'Mag. Acc+20 /Mag. Dmg.+20',
-    --     'Mag. Acc.+10',
+    --     'Mag. Acc.+10',4
     --     '"Fast Cast"+10',
     --     'Spell interruption rate down-10%',
     --   },
@@ -416,7 +429,9 @@ function get_sets()
 
   -- Blue Magic
   sets.Midcast.BlueMagic = {}
-  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing, {})
+  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing, {
+    ammo = 'Mavi Thatlum',
+  })
   sets.Midcast.BlueMagic.Nuke = set_combine(sets.Midcast.Nuke, {})
   sets.Midcast.BlueMagic.Healing = set_combine(sets.Midcast.Cure, {})
   sets.Midcast.BlueMagic.Enmity = set_combine(sets.Enmity, {})
