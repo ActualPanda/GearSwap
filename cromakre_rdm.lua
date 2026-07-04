@@ -364,12 +364,12 @@ function get_sets()
     -- sub = 'Ammurapi Shield',
     ammo = 'Staunch Tathlum',
     head = 'Jhakri Coronal +2',
-    body = { name = 'Viti. Tabard +3', augments = { 'Enhances "Chainspell" effect' } },                                 --15
-    hands = 'Atrophy Gloves +3',                                                                                        -- 20
+    body = { name = 'Viti. Tabard +3', augments = { 'Enhances "Chainspell" effect' } }, --15
+    hands = 'Atrophy Gloves +3', -- 20
     legs = 'Atrophy Tights +3',
-    feet = 'Leth. Houseaux +2',                                                                                         -- 35
-    neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },                                                       --20
-    waist = 'Embla Sash',                                                                                               --10
+    feet = 'Leth. Houseaux +2', -- 35
+    neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } }, --20
+    waist = 'Embla Sash', --10
     left_ear = 'Alabaster Earring',
     right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } }, -- 7
     left_ring = 'Defending Ring',
@@ -378,7 +378,7 @@ function get_sets()
       name = "Sucellos's Cape",
       augments = { 'MND+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'Mag. Acc.+10', '"Fast Cast"+10' },
     }, -- 20
-  }    -- 117% Duration
+  } -- 117% Duration
 
   -- Enhancing Duration on OTHERS
   sets.Midcast.Enhancing.Others = set_combine(sets.Midcast.Enhancing, {
@@ -506,7 +506,7 @@ function get_sets()
   sets.Midcast['Stoneskin'] = set_combine(sets.Midcast.Enhancing, {
     waist = 'Siegel Sash',
     legs = 'Shedir Seraweels',
-    -- neck = 'Nodens Gorget',
+    neck = 'Nodens Gorget',
     -- left_ear = 'Earthcry Earring',
   })
 
@@ -623,7 +623,7 @@ function get_sets()
     neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },
     waist = 'Sailfi Belt +1',
     left_ear = 'Moonshade Earring',
-    right_ear = 'Alabaster Earring',
+    right_ear = 'Ishvara Earring',
     left_ring = 'Ayanmo Ring',
     right_ring = 'Karieyh Ring',
     back = {
@@ -646,7 +646,7 @@ function get_sets()
 
   sets.WS.WSD = set_combine(sets.WS, {
     -- ammo = "Oshasha's Treatise",
-    -- left_ear = 'Ishvara Earring',
+    left_ear = 'Ishvara Earring',
   })
 
   sets.WS.MAB = set_combine(sets.WS, {
@@ -680,7 +680,7 @@ function get_sets()
 
   sets.WS['Sanguine Blade'] = set_combine(sets.WS.MAB, {
     -- head = 'Pixie Hairpin +1',
-    -- right_ring = 'Archon Ring',
+    right_ring = 'Archon Ring',
   })
 
   sets.WS['Aeolian Edge'] = set_combine(sets.WS.MAB, {
