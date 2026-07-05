@@ -328,10 +328,12 @@ function get_sets()
   --This set is used as base as is overwrote by specific gear changes (Spell Interruption Rate Down)
   sets.Midcast.SIRD = { --Total = 15 merits + 84 gear = 99 - Cap is 105
     ammo = 'Staunch Tathlum', -- 11
+    hands = { name = 'Amalric Gages', augments = { 'INT+10', 'Mag. Acc.+15', '"Mag.Atk.Bns."+15' } },
     -- hands = { name = 'Amalric Gages +1', augments = { 'INT+12', 'Mag. Acc.+20', '"Mag.Atk.Bns."+20' } }, --11
     legs = { name = 'Carmine Cuisses +1', augments = { 'HP+80', 'STR+12', 'INT+12' } }, -- 20
     -- feet = { name = 'Amalric Nails +1', augments = { 'MP+80', 'Mag. Acc.+20', '"Mag.Atk.Bns."+20' } }, --16
     waist = 'Rumination Sash', --10
+    left_ear = 'Halasz Earring',
   }
 
   -- Cure Set
@@ -394,11 +396,11 @@ function get_sets()
     ammo = 'Ghastly Tathlum +1',
     head = 'Jhakri Coronal +2',
     body = 'Jhakri Robe +2',
-    hands = 'Jhakri Cuffs +2',
-    legs = 'Jhakri Slops +2',
+    hands = { name = 'Amalric Gages', augments = { 'INT+10', 'Mag. Acc.+15', '"Mag.Atk.Bns."+15' } },
+    legs = { name = 'Carmine Cuisses +1', augments = { 'HP+80', 'STR+12', 'INT+12' } },
     feet = 'Jhakri Pigaches +2',
     neck = 'Sanctity Necklace',
-    waist = 'Witful Belt',
+    waist = 'Eschan Stone',
     left_ear = 'Friomisi Earring',
     right_ear = 'Novio Earring',
     left_ring = 'Metamor. Ring +1',
@@ -429,9 +431,10 @@ function get_sets()
 
   -- Blue Magic
   sets.Midcast.BlueMagic = {}
-  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing, {
-    ammo = 'Mavi Thatlum',
-  })
+  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing({
+    -- ammo = 'Mavi Tathlum',
+    neck = 'Mirage Stole',
+  }))
   sets.Midcast.BlueMagic.Nuke = set_combine(sets.Midcast.Nuke, {})
   sets.Midcast.BlueMagic.Healing = set_combine(sets.Midcast.Cure, {})
   sets.Midcast.BlueMagic.Enmity = set_combine(sets.Enmity, {})
