@@ -21,7 +21,7 @@ Random_Lockstyle = false
 state.OffenseMode:options('TP', 'ACC', 'DT', 'PDL', 'SB', 'MEVA') -- ACC effects WS and TP modes
 
 --Lockstyle sets to randomly equip
-Lockstyle_List = { 1, 2, 6, 12 }
+Lockstyle_List = {}
 
 --Set default mode (TP,ACC,DT)
 state.OffenseMode:set('TP')
