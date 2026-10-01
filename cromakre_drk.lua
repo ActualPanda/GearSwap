@@ -59,7 +59,7 @@ local function equip_idle()
 end
 
 local function equip_tp()
-  equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.tp[tp_mode.current])
+  equip(sets.weapons[weapon.current], sets.tp[tp_mode.current])
 end
 
 local function refresh()
