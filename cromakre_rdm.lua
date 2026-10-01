@@ -56,7 +56,11 @@ local function set_lockstyle()
 end
 
 local function equip_idle()
-  equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.idle[idle_mode.current])
+  if player.sub_job == 'NIN' or player.sub_job == 'DNC' then
+    equip(sets.weapons[weapon.current], sets.idle[idle_mode.current])
+  else
+    equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.idle[idle_mode.current])
+  end
   if run.value then
     equip(sets.idle.speed)
   end
