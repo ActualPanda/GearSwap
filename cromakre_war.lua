@@ -394,7 +394,21 @@ function get_sets()
   }
   sets.WS.RA = {}
 
-  sets.WS.WSD = {}
+  sets.WS.WSD = {
+    ammo = 'Knobkierrie',
+    head = 'Nyame Helm',
+    body = 'Boii Lorica +2',
+    hands = 'Boii Mufflers +2',
+    legs = 'Nyame Flanchard',
+    feet = 'Nyame Sollerets',
+    neck = 'Loricate Torque',
+    waist = 'Sailfi Belt +1',
+    left_ear = 'Thrud Earring',
+    right_ear = 'Ishvara Earring',
+    left_ring = 'Defending Ring',
+    right_ring = 'Gelatinous Ring +1',
+    back = "Cichol's Mantle",
+  }
   sets.WS.WSD.RA = {}
 
   sets.WS.MEVA = set_combine(sets.WS, {
