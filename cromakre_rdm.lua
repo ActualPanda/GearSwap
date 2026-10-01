@@ -63,7 +63,11 @@ local function equip_idle()
 end
 
 local function equip_tp()
-  equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.tp[tp_mode.current])
+  if player.sub_job == 'NIN' or player.sub_job == 'DNC' then
+    equip(sets.weapons[weapon.current], sets.tp[tp_mode.current])
+  else
+    equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.tp[tp_mode.current])
+  end
 end
 
 local function refresh()
