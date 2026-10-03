@@ -431,10 +431,10 @@ function get_sets()
 
   -- Blue Magic
   sets.Midcast.BlueMagic = {}
-  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing({
+  sets.Midcast.BlueMagic.Skill = set_combine(sets.Midcast.Enhancing, {
     -- ammo = 'Mavi Tathlum',
     neck = 'Mirage Stole',
-  }))
+  })
   sets.Midcast.BlueMagic.Nuke = set_combine(sets.Midcast.Nuke, {})
   sets.Midcast.BlueMagic.Healing = set_combine(sets.Midcast.Cure, {})
   sets.Midcast.BlueMagic.Enmity = set_combine(sets.Enmity, {})
