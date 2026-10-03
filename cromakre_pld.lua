@@ -95,8 +95,8 @@ local function set_priorities(key1, key2)
   end
   for i, v in pairs(future) do
     local priority = get_val(future[i], key1)
-      - get_val(current[i], key1)
-      + (get_val(future[i], key2) - get_val(current[i], key2))
+        - get_val(current[i], key1)
+        + (get_val(future[i], key2) - get_val(current[i], key2))
     if type(v) == 'table' then
       future[i].priority = priority
     else
@@ -295,15 +295,19 @@ function get_sets()
     ammo = { name = 'Staunch Tathlum' },
   }
 
+  -- +20 phalanx
   sets.midcast['Phalanx'] = set_combine(sets.idle.dt, {
+    head = { name = "Yorium Barbuta", augments = { 'Phalanx +3', }, hp = 41 }, -- +3
+    body = { name = "Yorium Cuirass", augments = { 'Phalanx +3', }, hp = 113 }, -- +3
     hands = {
       name = 'Souv. Handsch. +1',
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
       hp = 239,
       mp = 14,
-    },
-    legs = { name = "Sakpata's Cuisses", hp = 144, mp = 44 },
-    feet = { name = 'Souveran Schuhs', hp = 72, mp = 14 },
+    }, -- +5
+    legs = { name = "Sakpata's Cuisses", hp = 144, mp = 44 }, -- +5
+    feet = { name = 'Souveran Schuhs', hp = 72, mp = 14 }, -- +4
+    waist = "Olympus Sash",
   })
   -- ###############################################################
 
