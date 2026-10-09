@@ -173,11 +173,13 @@ function get_sets()
 		-- sub = "Khonsu",
 		-- ammo = "Homiliary",
 		head = "Nyame Helm",
-		body = "Arbatel Gown +2",
+		body = "Agwu's Robe",
+		-- body = "Arbatel Gown +2",
 		hands = "Nyame Gauntlets",
 		legs = "Agwu's Slops",
 		feet = "Nyame Sollerets",
 		neck = "Loricate Torque",
+		waist = "Fucho-no-Obi",
 		left_ear = "Alabaster Earring",
 		right_ear = "Dominance Earring",
 		left_ring = "Gelatinous Ring +1",
@@ -378,13 +380,13 @@ function get_sets()
 		body = "Mallquis Saio", --5DT
 		hands = "Acad. Bracers +2",
 		-- legs = "Bokwus Slops",  --4MDT
-		-- feet = "Mallquis Clogs",
+		feet = "Mallquis Clogs +1",
 		neck = "Loricate Torque", --6DT
 		-- waist = "Platinum moogle belt", --3DT
 		left_ear = "Alabaster earring", --5DT
 		right_ear = "Loquac. Earring",
 		-- left_ring = "Chirich ring",
-		-- right_ring = "Murky ring", --10DT
+		right_ring = "Defending ring", --10DT
 		-- back = "Fi Follet Cape +1",
 	}
 
@@ -400,6 +402,7 @@ function get_sets()
 		sub = "Elder's Grip +1",
 		-- sub="Enki Strap",
 		ammo = "Ghastly Tathlum +1",
+		head = "Jhakri Coronal +2",
 		-- head = "Peda. Mortar. +1",
 		body = "Agwu's Robe",
 		-- body = "Arbatel Gown +2",
@@ -422,7 +425,7 @@ function get_sets()
 	sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
 		body = "Agwu's Robe",
 		legs = "Agwu's Slops",
-		left_ring = "Mujin Band",
+		-- left_ring = "Mujin Band",
 	})
 
 	sets.midcast.nuking.acc = {
