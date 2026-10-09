@@ -401,7 +401,7 @@ function get_sets()
     hands = 'Boii Mufflers +2',
     legs = 'Nyame Flanchard',
     feet = 'Sulev. Leggings +2',
-    neck = 'Loricate Torque',
+    neck = 'Lissome Necklace',
     waist = 'Sailfi Belt +1',
     left_ear = 'Thrud Earring',
     right_ear = 'Ishvara Earring',
