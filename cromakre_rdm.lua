@@ -116,11 +116,11 @@ function get_sets()
   sets.weapons = {
     ['Sakpata'] = { main = "Sakpata's Sword" },
     ['Brilliance'] = { main = 'Brilliance' },
-    ['Naegling'] = { main = 'Naegling' },
-    ['Mafic Cudgel'] = { main = 'Mafic Cudgel' },
-    ['Kaja Rod'] = { main = 'Kaja Rod' },
+    ['Naegling'] = { main = 'Naegling', sub = 'Machaera +2' },
+    ['Mafic Cudgel'] = { main = 'Mafic Cudgel', sub = 'Machaera +2' },
+    ['Kaja Rod'] = { main = 'Kaja Rod', sub = 'Machaera +2' },
     ['Marin Staff +1'] = { main = 'Marin Staff +1', sub = "Elder's Grip +1" },
-    ["Bunzi's Rod"] = { main = "Bunzi's Rod" },
+    ["Bunzi's Rod"] = { main = "Bunzi's Rod", sub = 'Machaera +2' },
     ['Unlocked'] = { main = '' },
   }
   sets.shields = {
