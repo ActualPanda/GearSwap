@@ -188,8 +188,8 @@ function get_sets()
 
   sets.midcast = {}
 
-  sets.midcast['Dark Magic'] = {}
-  sets.midcast['Dark Magic']['Drain'] = set_combine(sets.idle.dt, {
+  sets.midcast = {}
+  sets.midcast['Drain'] = set_combine(sets.idle.dt, {
     ammo = 'Ghastly Tathlum +1',
     hands = { name = 'Carmine Fin. Ga.', augments = { 'Rng.Atk.+15', '"Mag.Atk.Bns."+10', '"Store TP"+5' } },
     feet = { name = 'Odyssean Greaves', augments = { 'Attack+12', 'Enmity+6', 'VIT+6', 'Accuracy+3' } },
@@ -202,9 +202,9 @@ function get_sets()
     back = 'Merciful Cape',
   })
 
-  sets.midcast['Dark Magic']['Aspir'] = sets.midcast['Drain']
+  sets.midcast['Aspir'] = sets.midcast['Drain']
 
-  sets.midcast['Dark Magic']['Dread Spikes'] = set_combine(sets.idle.dt, {
+  sets.midcast['Dread Spikes'] = set_combine(sets.idle.dt, {
     ammo = 'Aqreqaq Bomblet',
     head = 'Nyame Helm',
     body = 'Heath. Cuirass +2',
@@ -279,10 +279,11 @@ function precast(spell)
 end
 
 function midcast(spell)
-  if spell.skill == 'Enhancing Magic' then
-  elseif sets.midcast[spell.skill] then
-    if sets.midcast[spell.name] then
-      equip(sets.midcast[spell.name])
+  if sets.midcast[spell.name] then
+    equip(sets.midcast[spell.name])
+  elseif spell.type == 'WeaponSkill' then
+    if sets.ws[spell.name] then
+      equip(sets.ws[spell.name])
     end
   elseif spell.type == 'JobAbility' then
   end
