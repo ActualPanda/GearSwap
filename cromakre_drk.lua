@@ -129,7 +129,7 @@ function get_sets()
     right_ear = 'Eabani Earring',
     left_ring = "K'ayres Ring",
     right_ring = 'Defending Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   sets.idle.speed = {
@@ -150,7 +150,7 @@ function get_sets()
     right_ear = 'Brutal Earring',
     left_ring = 'Hetairoi Ring',
     right_ring = 'Petrov Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   sets.tp.dt = {
@@ -166,7 +166,7 @@ function get_sets()
     right_ear = 'Brutal Earring',
     left_ring = 'Defending Ring',
     right_ring = 'Petrov Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   sets.precast = {}
@@ -183,7 +183,7 @@ function get_sets()
     right_ear = 'Loquac. Earring',
     left_ring = "Naji's Loop",
     right_ring = 'Kishar Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   sets.midcast = {}
@@ -199,7 +199,7 @@ function get_sets()
     right_ear = 'Hermetic Earring',
     left_ring = 'Excelsis Ring',
     right_ring = 'Archon Ring',
-    back = 'Merciful Cape',
+    back = "Ankou's Mantle",
   })
 
   sets.midcast['Aspir'] = sets.midcast['Drain']
@@ -217,7 +217,7 @@ function get_sets()
     right_ear = 'Eabani Earring',
     left_ring = "K'ayres Ring",
     right_ring = 'Gelatinous Ring +1',
-    back = 'Merciful Cape',
+    back = "Ankou's Mantle",
   })
   -- ###############################################################
 
@@ -237,7 +237,7 @@ function get_sets()
     right_ear = 'Moonshade Earring',
     left_ring = 'Karieyh Ring',
     right_ring = 'Hetairoi Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   sets.ws['Resolution'] = {
@@ -253,7 +253,7 @@ function get_sets()
     right_ear = 'Moonshade Earring',
     left_ring = 'Petrov Ring',
     right_ring = 'Hetairoi Ring',
-    back = 'Grounded Mantle',
+    back = "Ankou's Mantle",
   }
 
   lockstyleset = 11
