@@ -373,7 +373,7 @@ function get_sets()
 	}
 
 	sets.midcast.HelixI = {
-		main = "Earth Staff", --20PDT
+		-- main = "Earth Staff", --20PDT
 		sub = "Khonsu",     --5DT
 		ammo = "Staunch tathlum", --2DT
 		head = "Vanya Hood", --2MDT
