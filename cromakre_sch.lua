@@ -195,7 +195,7 @@ function get_sets()
 
   -- Your idle Sublimation set combine from refresh or DT depening on mode.
   sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
-    head = 'Acad. Mortar. +1',
+    head = 'Acad. Mortar. +2',
     -- body = "Peda. Gown +2",
     waist = 'Embla Sash',
   })
@@ -271,7 +271,7 @@ function get_sets()
     -- main = { name = "Pedagogy Staff", augments = { 'Path: C', } },
     -- sub = "Clerisy Strap +1",
     -- ammo = "Incantor Stone",
-    head = 'Acad. Mortar. +1',
+    head = 'Acad. Mortar. +2',
     body = "Agwu's Robe",
     hands = 'Acad. Bracers +2',
     legs = "Agwu's Slops",
@@ -314,7 +314,7 @@ function get_sets()
 
   sets.precast['Tabula Rasa'] = {}
   sets.precast['Enlightenment'] = {}
-  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +1' }
+  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
   -- sets.precast["Enlightenment"] = { body = "Peda. Gown +2" }
   -- sets.precast["Sublimation"] = { head = "Acad. Mortar. +4", body = "Peda. Gown +2" }
@@ -458,7 +458,7 @@ function get_sets()
     main = 'Marin Staff +1',
     -- sub = "Khonsu",
     ammo = 'Pemphredo Tathlum',
-    head = 'Acad. Mortar. +1',
+    head = 'Acad. Mortar. +2',
     body = 'Acad. Gown +2',
     -- hands = "Acad. Bracers +2",
     legs = 'Arbatel Pants +2',
@@ -479,7 +479,7 @@ function get_sets()
     main = 'Marin Staff +1',
     sub = 'Khonsu',
     -- ammo = "Pemphredo Tathlum",
-    head = 'Acad. Mortar. +1',
+    head = 'Acad. Mortar. +2',
     body = 'Arbatel Gown +2',
     -- hands = { name = "Kaykaus Cuffs +1", augments = { 'MP+80', 'MND+12', 'Mag. Acc.+20', } },
     legs = 'Arbatel Pants +2',
