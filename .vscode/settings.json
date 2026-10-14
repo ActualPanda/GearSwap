@@ -46,7 +46,8 @@
     "log",
     "DualWield",
     "TwoHand",
-    "S"
+    "S",
+    "empty"
   ],
   "stylua.targetReleaseVersion": "latest",
   "Lua.diagnostics.disable": [
