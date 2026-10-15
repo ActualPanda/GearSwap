@@ -138,29 +138,34 @@ function get_sets()
 
   sets.tp = {}
   sets.tp.normal = {
-    ammo="Coiste Bodhar",
-    head="Flam. Zucchetto +2",
-    body="Sakpata's Plate",
-    hands="Sakpata's Gauntlets",
-    legs="Ig. Flanchard +2",
-    feet="Flam. Gambieras +2",
-    neck="Lissome Necklace",
-    waist="Sailfi Belt +1",
-    left_ear="Brutal Earring",
-    right_ear={ name="Heath. Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+12','Mag. Acc.+12','Weapon skill damage +2%',}},
-    left_ring="K'ayres Ring",
-    right_ring="Petrov Ring",
-    back="Ankou's Mantle",
+    ammo = 'Coiste Bodhar',
+    head = 'Flam. Zucchetto +2',
+    body = "Sakpata's Plate",
+    hands = "Sakpata's Gauntlets",
+    legs = 'Ig. Flanchard +2',
+    feet = 'Flam. Gambieras +2',
+    neck = 'Lissome Necklace',
+    waist = 'Sailfi Belt +1',
+    left_ear = 'Brutal Earring',
+    right_ear = {
+      name = 'Heath. Earring +1',
+      augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+12', 'Mag. Acc.+12', 'Weapon skill damage +2%' },
+    },
+    left_ring = "K'ayres Ring",
+    right_ring = 'Petrov Ring',
+    back = "Ankou's Mantle",
   }
 
   sets.tp.dt = {
+    main = 'Montante +1',
+    sub = 'Utu Grip',
     ammo = 'Coiste Bodhar',
     head = "Sakpata's Helm",
     body = "Sakpata's Plate",
     hands = "Sakpata's Gauntlets",
-    legs = "Sakpata's Cuisses",
+    legs = 'Ig. Flanchard +2',
     feet = "Sakpata's Leggings",
-    neck = 'Lissome Necklace',
+    neck = 'Loricate Torque',
     waist = 'Sailfi Belt +1',
     left_ear = 'Alabaster Earring',
     right_ear = 'Brutal Earring',
@@ -225,7 +230,7 @@ function get_sets()
 
   sets.ws = {}
   sets.ws['Torcleaver'] = {
-    ammo = 'Knobkierrie',
+    ammo = "Oshasha's Treatise",
     head = 'Nyame Helm',
     body = 'Nyame Mail',
     hands = 'Nyame Gauntlets',
@@ -235,18 +240,18 @@ function get_sets()
     waist = 'Sailfi Belt +1',
     left_ear = 'Thrud Earring',
     right_ear = 'Moonshade Earring',
-    left_ring = 'Karieyh Ring',
+    left_ring = 'Petrov Ring',
     right_ring = 'Hetairoi Ring',
     back = "Ankou's Mantle",
   }
 
   sets.ws['Resolution'] = {
     ammo = 'Coiste Bodhar',
-    head = 'Flam. Zucchetto +2',
-    body = "Sakpata's Plate",
-    hands = "Sakpata's Gauntlets",
-    legs = "Sakpata's Cuisses",
-    feet = 'Flam. Gambieras +2',
+    head = 'Nyame Helm',
+    body = 'Nyame Mail',
+    hands = 'Nyame Gauntlets',
+    legs = 'Nyame Flanchard',
+    feet = 'Nyame Sollerets',
     neck = 'Fotia Gorget',
     waist = 'Fotia Belt',
     left_ear = 'Brutal Earring',
