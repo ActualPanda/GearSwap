@@ -625,6 +625,7 @@ function get_sets()
     -- body = { name = "Telchine Chas.", augments = { '"Regen" potency+3', } },
     -- legs = { name = "Telchine Braconi", augments = { '"Regen" potency+2', } },
     -- feet = { name = "Telchine Pigaches", augments = { '"Regen" potency+3', } },
+    back = { name = "Bookworm's Cape", augments = { 'INT+1', 'MND+3', 'Helix eff. dur. +19', '"Regen" potency+4' } },
   })
 
   ------------
