@@ -16,7 +16,7 @@ local bindings = {
 }
 
 local idle_mode = M({ ['description'] = 'What mode to idle in', 'dt', 'experimental' })
-local tp_mode = M({ ['description'] = 'What mode to tp in', 'dt' })
+local tp_mode = M({ ['description'] = 'What mode to tp in', 'dt', 'experimental' })
 local weapon = M({
   ['description'] = 'What weapon to use',
   'Sakpata',
@@ -205,6 +205,26 @@ function get_sets()
     },
     neck = { name = 'Loricate Torque' },
     ammo = { name = 'Staunch Tathlum' },
+  }
+
+  sets.tp.experimental = {
+    ammo = 'Staunch Tathlum',
+    head = { name = 'Chev. Armet +2', hp = 135 },
+    body = { name = "Sakpata's Plate", hp = 136 },
+    hands = {
+      name = 'Souv. Handsch. +1',
+      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
+      hp = 139,
+    },
+    legs = { name = 'Chev. Cuisses +2', hp = 117 },
+    feet = { name = "Sakpata's Leggings", hp = 68 },
+    neck = { name = 'Elite Royal Collar' },
+    waist = { name = 'Creed Baudrier', hp = 40 },
+    left_ear = { name = 'Alabaster Earring', hp = 100 },
+    right_ear = { name = 'Tuisto Earring', hp = 150 },
+    left_ring = { name = "Warden's Ring" },
+    right_ring = { name = 'Vengeful Ring', hp = 20 },
+    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
 
   sets.precast = {}
