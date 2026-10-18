@@ -131,7 +131,7 @@ function get_sets()
   Ammo.Bullet.MAB = 'Orichalc. Bullet'
   Ammo.Bullet.MACC = 'Eminent Bullet' -- Magic Accuracy
   Ammo.Bullet.QD = 'Orichalc. Bullet' -- Quick Draw
-  Ammo.Bullet.MAG_WS = 'Eminent Bullet' -- Magic Weapon Skills
+  Ammo.Bullet.MAG_WS = 'Orichalc. Bullet' -- Magic Weapon Skills
 
   -- Standard Idle set with -DT,Refresh,Regen with NO movement gear
   sets.Idle = {
@@ -448,7 +448,7 @@ function get_sets()
   sets.QuickDraw.DMG = {
     ammo = Ammo.Bullet.QD,
     head = { name = 'Nyame Helm', augments = { 'Path: B' } },
-    body = { name = 'Lanun Frac +2', augments = { 'Enhances "Loaded Deck" effect' } },
+    body = { name = 'Lanun Frac +3', augments = { 'Enhances "Loaded Deck" effect' } },
     hands = 'Nyame Gauntlets',
     legs = 'Nyame Flanchard',
     feet = "Chasseur's Bottes",
@@ -512,7 +512,7 @@ function get_sets()
   }
   sets.JA['Phantom Roll'] = {}
   sets.JA['Random Deal'] = {
-    body = { name = 'Lanun Frac +2', augments = { 'Enhances "Loaded Deck" effect' } },
+    body = { name = 'Lanun Frac +3', augments = { 'Enhances "Loaded Deck" effect' } },
   }
   sets.JA['Snake Eye'] = {
     -- legs = { name = 'Lanun Trews +3', augments = { 'Enhances "Snake Eye" effect' } },
@@ -616,7 +616,7 @@ function get_sets()
 
   sets.WS.MAB = set_combine(sets.WS, {
     ammo = Ammo.Bullet.MAB,
-    body = 'Lanun Frac +2',
+    body = 'Lanun Frac +3',
     feet = 'Lanun Bottes +3',
     waist = 'Eschan Stone',
     neck = { name = 'Comm. Charm +1', augments = { 'Path: A' } },
@@ -723,7 +723,7 @@ function get_sets()
 
   sets.WS['Leaden Salute'] = set_combine(sets.WS.MAB, {
     -- head = 'Pixie Hairpin +1',
-    body = 'Lanun Frac +2',
+    body = 'Lanun Frac +3',
     right_ring = 'Archon Ring',
     right_ear = { name = 'Moonshade Earring', augments = { 'Attack+4', 'TP Bonus +250' } },
     -- waist = 'Svelt. Gouriz +1', -- Changes based off elemental function
