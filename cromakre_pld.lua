@@ -15,8 +15,8 @@ local bindings = {
   ['^F1'] = 'gs c cycle_idle',
 }
 
-local idle_mode = M({ ['description'] = 'What mode to idle in', 'dt', 'experimental' })
-local tp_mode = M({ ['description'] = 'What mode to tp in', 'dt', 'experimental' })
+local idle_mode = M({ ['description'] = 'What mode to idle in', 'dt' })
+local tp_mode = M({ ['description'] = 'What mode to tp in', 'dt' })
 local weapon = M({
   ['description'] = 'What weapon to use',
   'Sakpata',
@@ -119,45 +119,13 @@ function get_sets()
 
   sets.idle = {}
   sets.idle.dt = {
-    body = { name = 'Rev. Surcoat +3', hp = 254 },
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
-    legs = {
-      name = 'Souv. Diechlings +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 162,
-    },
-    head = { name = 'Chev. Armet +2', hp = 135 },
-    left_ear = { name = 'Alabaster Earring', hp = 100 },
-    right_ring = { name = "K'ayres Ring", hp = 70 },
-    feet = { name = "Sakpata's Leggings", hp = 68 },
-    back = {
-      name = "Rudianos's Mantle",
-      augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' },
-      priority = 7,
-      hp = 60,
-    },
-    waist = { name = 'Creed Baudrier', hp = 40 },
-    left_ring = { name = 'Supershear Ring', hp = 30 },
-    right_ear = {
-      name = 'Chev. Earring +1',
-      augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+15', 'Mag. Acc.+15', 'Damage taken-5%' },
-    },
-    neck = { name = 'Loricate Torque' },
-    ammo = { name = 'Staunch Tathlum' },
-  }
-
-  sets.idle.experimental = {
     ammo = 'Staunch Tathlum',
     head = { name = 'Chev. Armet +2', hp = 135 },
     body = { name = "Sakpata's Plate", hp = 136 },
     hands = {
       name = 'Souv. Handsch. +1',
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 139,
+      hp = 239,
     },
     legs = { name = 'Chev. Cuisses +2', hp = 117 },
     feet = { name = "Sakpata's Leggings", hp = 68 },
@@ -176,45 +144,13 @@ function get_sets()
 
   sets.tp = {}
   sets.tp.dt = {
-    body = { name = 'Rev. Surcoat +3', hp = 254 },
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
-    legs = {
-      name = 'Souv. Diechlings +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 162,
-    },
-    head = { name = 'Chev. Armet +2', hp = 135 },
-    left_ear = { name = 'Alabaster Earring', hp = 100 },
-    right_ring = { name = "K'ayres Ring", hp = 70 },
-    feet = { name = "Sakpata's Leggings", hp = 68 },
-    back = {
-      name = "Rudianos's Mantle",
-      augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' },
-      priority = 7,
-      hp = 60,
-    },
-    waist = { name = 'Creed Baudrier', hp = 40 },
-    left_ring = { name = 'Supershear Ring', hp = 30 },
-    right_ear = {
-      name = 'Chev. Earring +1',
-      augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+15', 'Mag. Acc.+15', 'Damage taken-5%' },
-    },
-    neck = { name = 'Loricate Torque' },
-    ammo = { name = 'Staunch Tathlum' },
-  }
-
-  sets.tp.experimental = {
     ammo = 'Staunch Tathlum',
     head = { name = 'Chev. Armet +2', hp = 135 },
     body = { name = "Sakpata's Plate", hp = 136 },
     hands = {
       name = 'Souv. Handsch. +1',
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 139,
+      hp = 239,
     },
     legs = { name = 'Chev. Cuisses +2', hp = 117 },
     feet = { name = "Sakpata's Leggings", hp = 68 },
@@ -223,13 +159,13 @@ function get_sets()
     left_ear = { name = 'Alabaster Earring', hp = 100 },
     right_ear = { name = 'Tuisto Earring', hp = 150 },
     left_ring = { name = "Warden's Ring" },
-    right_ring = { name = 'Vengeful Ring', hp = 20 },
+    right_ring = { name = "K'ayres Ring", hp = 70 },
     back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
 
   sets.precast = {}
   sets.precast.default = {
-    body = { name = 'Rev. Surcoat +3', hp = 254, mp = 62 },
+    body = { name = "Sakpata's Plate", hp = 136 },
     hands = {
       name = 'Souv. Handsch. +1',
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
@@ -251,7 +187,7 @@ function get_sets()
     feet = { name = 'Carmine Greaves', augments = { 'HP+60', 'MP+60', 'Phys. dmg. taken -3' }, hp = 75 },
     left_ring = { name = "K'ayres Ring", hp = 70 },
     neck = { name = 'Voltsurge Torque', mp = 20 },
-    right_ear = { name = 'Loquac. Earring' },
+    right_ear = { name = 'Tuisto Earring', hp = 150 },
     right_ring = { name = 'Kishar Ring' },
     ammo = 'Staunch Tathlum',
   }
@@ -354,37 +290,9 @@ function get_sets()
   sets.midcast['Savage Blade'] = sets.midcast.full_enmity
   sets.midcast['Requiescat'] = sets.midcast.full_enmity
   sets.midcast['Chant du Cygne'] = sets.midcast.full_enmity
-  sets.midcast['Atonement'] = {
+  sets.midcast['Atonement'] = set_combine(sets.midcast.full_enmity, {
     ammo = "Oshasha's Treatise",
-    head = {
-      name = 'Souveran Schaller',
-      augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
-      hp = 205,
-    },
-    body = {
-      name = 'Souveran Cuirass',
-      augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
-      hp = 148,
-    },
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
-    legs = {
-      name = 'Souv. Diechlings +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 162,
-    },
-    feet = { name = 'Chev. Sabatons +2', hp = 42 },
-    neck = { name = 'Moonbeam Necklace' },
-    waist = 'Fotia Belt',
-    left_ear = { name = 'Tuisto Earring', hp = 150 },
-    right_ear = 'Moonshade Earring',
-    left_ring = 'Apeile Ring',
-    right_ring = { name = 'Supershear Ring', hp = 30 },
-    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
-  }
+  })
 
   sets.midcast['Divine Emblem'] = set_combine(sets.midcast.full_enmity, {
     feet = { name = 'Chev. Sabatons +2', hp = 42 },
@@ -413,11 +321,7 @@ function precast(spell)
 end
 
 function midcast(spell)
-  if spell.skill == 'Enhancing Magic' then
-    if spell.name == 'Phalanx' then
-      equip(sets.midcast['Phalanx'])
-    end
-  elseif sets.midcast[spell.name] then
+  if sets.midcast[spell.name] then
     equip(sets.midcast[spell.name])
   elseif sets.midcast[spell.skill] then
     equip(sets.midcast[spell.skill])
