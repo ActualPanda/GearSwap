@@ -92,7 +92,7 @@ function get_sets()
 
   -- This is used when you do not have dual wield and is not a two handed weapon
   sets.Weapons.Shield = {
-    sub = 'Blurred Shield',
+    sub = 'Blurred Shield +1',
   }
   sets.Weapons.Sleep = {}
 
@@ -396,12 +396,12 @@ function get_sets()
 
   sets.WS.WSD = {
     ammo = 'Knobkierrie',
-    head = 'Nyame Helm',
+    head = 'Agoge Mask +3',
     body = 'Nyame Mail',
     hands = 'Boii Mufflers +2',
     legs = 'Nyame Flanchard',
     feet = 'Sulev. Leggings +2',
-    neck = 'Lissome Necklace',
+    neck = 'Rep. Plat. Medal',
     waist = 'Sailfi Belt +1',
     left_ear = 'Thrud Earring',
     right_ear = 'Ishvara Earring',
