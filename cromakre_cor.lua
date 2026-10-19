@@ -542,7 +542,7 @@ function get_sets()
     -- head = { name = 'Lanun Tricorne +4', augments = { 'Enhances "Winning Streak" effect' } }, -- 50% Job ability Bonus
     hands = "Chasseur's Gants +2", --60 sec Duration
     neck = 'Regal Necklace', -- 20 sec Duration
-    -- right_ring = "Luzaf's Ring", -- 16 yalm range
+    right_ring = "Luzaf's Ring", -- 16 yalm range
     back = {
       name = "Camulus's Mantle",
       augments = { 'Rng.Acc.+20 Rng.Atk.+20', 'Weapon skill damage +10%' },
@@ -594,7 +594,7 @@ function get_sets()
     left_ear = { name = 'Moonshade Earring', augments = { 'Attack+4', 'TP Bonus +250' } },
     right_ear = 'Ishvara Earring',
     -- left_ring = 'Regal Ring',
-    left_ring = 'Karieyh Ring',
+    -- left_ring = 'Karieyh Ring',
     back = {
       name = "Camulus's Mantle",
       augments = { 'Rng.Acc.+20 Rng.Atk.+20', 'Weapon skill damage +10%' },
@@ -620,7 +620,7 @@ function get_sets()
     feet = 'Lanun Bottes +3',
     waist = 'Eschan Stone',
     neck = { name = 'Comm. Charm +1', augments = { 'Path: A' } },
-    left_ear = 'Friomisi Earring',
+    right_ear = 'Friomisi Earring',
     -- right_ear = 'Crematio Earring',
     -- back = {
     --   name = "Camulus's Mantle",
@@ -683,6 +683,7 @@ function get_sets()
   })
 
   sets.WS['Savage Blade'] = set_combine(sets.WS, {
+    neck = 'Rep. Plat. Medal',
     -- left_ring = 'Sroda Ring',
   })
 
@@ -708,7 +709,7 @@ function get_sets()
     -- left_ear = 'Telos Earring',
     -- right_ear = 'Crep. Earring',
     -- left_ring = 'Crepuscular Ring',
-    right_ring = 'Karieyh Ring',
+    -- right_ring = 'Karieyh Ring',
     back = {
       name = "Camulus's Mantle",
       augments = { 'Rng.Acc.+20 Rng.Atk.+20', 'Weapon skill damage +10%' },
@@ -724,8 +725,10 @@ function get_sets()
   sets.WS['Leaden Salute'] = set_combine(sets.WS.MAB, {
     -- head = 'Pixie Hairpin +1',
     body = 'Lanun Frac +3',
+    neck = 'Sibyl Scarf',
     right_ring = 'Archon Ring',
     right_ear = { name = 'Moonshade Earring', augments = { 'Attack+4', 'TP Bonus +250' } },
+    left_ear = 'Friomisi Earring',
     -- waist = 'Svelt. Gouriz +1', -- Changes based off elemental function
   })
 
