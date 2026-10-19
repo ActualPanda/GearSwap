@@ -246,7 +246,7 @@ function get_sets()
     left_ear = { name = 'Alabaster Earring', hp = 100 },
     right_ring = { name = "K'ayres Ring", hp = 70 },
     back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
-    waist = { name = 'Creed Baudrier', hp = 40 },
+    waist = { name = 'Rumination Sash' },
     feet = {
       name = 'Odyssean Greaves',
       augments = { 'Attack+12', 'Enmity+6', 'VIT+6', 'Accuracy+3' },
@@ -329,10 +329,6 @@ function midcast(spell)
     equip(sets.midcast.full_enmity)
   end
 
-  -- just add refresh gear here
-  if string.match(spell.name, '^Refresh') and spell.target.name == player.name then
-    equip({ waist = 'Gishdubar Sash' })
-  end
   set_priorities('hp')
 end
 
