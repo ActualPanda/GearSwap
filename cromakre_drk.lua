@@ -289,6 +289,8 @@ function midcast(spell)
   elseif spell.type == 'WeaponSkill' then
     if sets.ws[spell.name] then
       equip(sets.ws[spell.name])
+    else
+      equip(sets.ws['Torcleaver'])
     end
   elseif spell.type == 'JobAbility' then
   end
