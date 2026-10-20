@@ -257,7 +257,7 @@ function get_sets()
     ammo = { name = 'Staunch Tathlum' },
   }
 
-  -- +24 phalanx
+  -- +32 phalanx - with Sakpata and Priwen
   sets.midcast['Phalanx'] = set_combine(sets.idle.dt, {
     head = { name = 'Yorium Barbuta', augments = { 'Phalanx +3' }, hp = 41 }, -- +3
     body = { name = 'Yorium Cuirass', augments = { 'Phalanx +3' }, hp = 113 }, -- +3
@@ -267,10 +267,10 @@ function get_sets()
       hp = 239,
     }, -- +5
     feet = {
-      name = 'Souveran Schuhs',
-      augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
-      hp = 152,
-    }, -- +4
+      name = 'Souveran Schuhs +1',
+      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
+      hp = 227,
+    }, -- 5
     right_ear = { name = 'Tuisto Earring', hp = 150 },
     legs = { name = "Sakpata's Cuisses", hp = 144 }, -- +5
     neck = { name = 'Sanctity Necklace', hp = 35 },
