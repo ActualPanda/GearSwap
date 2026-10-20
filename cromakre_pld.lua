@@ -275,6 +275,7 @@ function get_sets()
     legs = { name = "Sakpata's Cuisses", hp = 144 }, -- +5
     neck = { name = 'Sanctity Necklace', hp = 35 },
     waist = { name = 'Creed Baudrier', hp = 40 },
+    back = { name = 'Weard Mantle', augments = { 'VIT+3', 'DEX+2', 'Enmity+6', 'Phalanx +4' } },
   })
   -- ###############################################################
 
