@@ -522,7 +522,7 @@ function get_sets()
   sets.JA['Cutting Cards'] = {}
   sets.JA['Crooked Cards'] = {}
   sets.JA['Double-Up'] = {
-    -- right_rsing = "Luzaf's Ring", -- 16 yalm range
+    right_ring = "Luzaf's Ring", -- 16 yalm range
   }
 
   sets.Waltz = set_combine(sets.OffenseMode.DT, {
