@@ -257,7 +257,7 @@ function get_sets()
     ammo = { name = 'Staunch Tathlum' },
   }
 
-  -- +20 phalanx
+  -- +24 phalanx
   sets.midcast['Phalanx'] = set_combine(sets.idle.dt, {
     head = { name = 'Yorium Barbuta', augments = { 'Phalanx +3' }, hp = 41 }, -- +3
     body = { name = 'Yorium Cuirass', augments = { 'Phalanx +3' }, hp = 113 }, -- +3
