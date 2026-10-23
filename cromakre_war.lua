@@ -99,7 +99,7 @@ function get_sets()
 
   -- This is used when you do not have dual wield and is not a two handed weapon
   sets.Weapons.Shield = {
-    sub = 'Blurred Shield +1',
+    sub = 'Blurred Shield',
   }
   sets.Weapons.Sleep = {}
 
