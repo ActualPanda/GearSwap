@@ -196,7 +196,7 @@ function get_sets()
   -- Your idle Sublimation set combine from refresh or DT depening on mode.
   sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
     head = 'Acad. Mortar. +2',
-    -- body = "Peda. Gown +2",
+    body = "Peda. Gown +1",
     waist = 'Embla Sash',
   })
   -- Your idle DT set
@@ -313,7 +313,7 @@ function get_sets()
   -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
   -- Then only swap in what under this set after everything else.
   sets.precast.grimoire = {
-    -- head="Peda. Mortar. +4",
+    head="Peda. Mortar. +1",
     -- feet="Acad. Loafers +4",
   }
 
@@ -334,7 +334,7 @@ function get_sets()
   sets.precast['Enlightenment'] = {}
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
-  -- sets.precast["Enlightenment"] = { body = "Peda. Gown +2" }
+  sets.precast["Enlightenment"] = { body = "Peda. Gown +1" }
   -- sets.precast["Sublimation"] = { head = "Acad. Mortar. +4", body = "Peda. Gown +2" }
 
   ----------
@@ -403,15 +403,15 @@ function get_sets()
   -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
   sets.midcast.casting = {}
 
-  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +4', body = 'Peda. Gown +2' }
+  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +4', body = 'Peda. Gown +1' }
 
   sets.midcast.nuking.normal = {
     main = 'Marin Staff +1',
     sub = "Elder's Grip +1",
     -- sub="Enki Strap",
     ammo = 'Ghastly Tathlum +1',
-    head = 'Arbatel Bonnet +2',
-    -- head = "Peda. Mortar. +1",
+    -- head = 'Arbatel Bonnet +2',
+    head = "Peda. Mortar. +1",
     body = 'Jhakri Robe +2',
     -- body = "Arbatel Gown +2",
     hands = 'Arbatel Bracers +2',
