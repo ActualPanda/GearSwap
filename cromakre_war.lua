@@ -31,6 +31,7 @@ state.WeaponMode:options(
   'Kaja Chopper',
   -- 'Chango',
   'Shining One',
+  'Great Sword',
   'Savage Blade',
   'Decimation',
   'Axe',
@@ -60,6 +61,12 @@ function get_sets()
     main = 'Shining One',
     sub = 'Utu Grip',
   }
+
+  sets.Weapons['Great Sword'] = {
+    main = 'Montante +1',
+    sub = 'Utu Grip',
+  }
+
   sets.Weapons['Savage Blade'] = {
     main = 'Naegling',
     sub = 'Sangarius',
