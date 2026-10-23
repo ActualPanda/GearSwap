@@ -166,8 +166,8 @@ function get_sets()
 
   -- Your idle set
   sets.me.idle.refresh = {
-    -- main = "Mpaca's Staff",
-    -- sub = "Khonsu",
+    main = 'Marin Staff',
+    sub = 'Kaja Grip',
     ammo = 'Staunch Tathlum',
     head = 'Nyame Helm',
     body = "Agwu's Robe",
@@ -196,7 +196,7 @@ function get_sets()
   -- Your idle Sublimation set combine from refresh or DT depening on mode.
   sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
     head = 'Acad. Mortar. +2',
-    body = "Peda. Gown +1",
+    body = 'Peda. Gown +1',
     waist = 'Embla Sash',
   })
   -- Your idle DT set
@@ -269,7 +269,7 @@ function get_sets()
   -- Grimoire: 10(cap:25) / rdm: 15
   sets.precast.casting = {
     main = 'Marin Staff +1',
-    sub = "Elder's Grip +1",
+    sub = 'Kaja Grip',
     ammo = 'Incantor Stone',
     head = { name = 'Merlinic Hood', augments = { '"Fast Cast"+6', 'CHR+3', '"Mag.Atk.Bns."+3' } },
     body = "Agwu's Robe",
@@ -313,7 +313,7 @@ function get_sets()
   -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
   -- Then only swap in what under this set after everything else.
   sets.precast.grimoire = {
-    head="Peda. Mortar. +1",
+    head = 'Peda. Mortar. +1',
     -- feet="Acad. Loafers +4",
   }
 
@@ -334,7 +334,7 @@ function get_sets()
   sets.precast['Enlightenment'] = {}
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
-  sets.precast["Enlightenment"] = { body = "Peda. Gown +1" }
+  sets.precast['Enlightenment'] = { body = 'Peda. Gown +1' }
   -- sets.precast["Sublimation"] = { head = "Acad. Mortar. +4", body = "Peda. Gown +2" }
 
   ----------
@@ -411,7 +411,7 @@ function get_sets()
     -- sub="Enki Strap",
     ammo = 'Ghastly Tathlum +1',
     -- head = 'Arbatel Bonnet +2',
-    head = "Peda. Mortar. +1",
+    head = 'Peda. Mortar. +1',
     body = 'Jhakri Robe +2',
     -- body = "Arbatel Gown +2",
     hands = 'Arbatel Bracers +2',
@@ -448,7 +448,7 @@ function get_sets()
   --DT casting set
   sets.midcast.nuking.DT = {
     main = 'Marin Staff +1',
-    sub = 'Khonsu',
+    sub = 'Kaja Grip',
     ammo = 'Ghastly Tathlum +1',
     head = 'Arbatel Bonnet +2',
     body = 'Jhakri Robe +2',
@@ -587,7 +587,8 @@ function get_sets()
   sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal, {
     -- main = "Chatoyant Staff",
     -- sub = "Khonsu",
-    waist = 'Fucho-no-Obi',
+    -- waist = 'Fucho-no-Obi',
+    waist = 'Hachirin-no-Obi',
   })
 
   ------------
