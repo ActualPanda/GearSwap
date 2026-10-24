@@ -146,7 +146,7 @@ refreshType = idleModes[1] -- leave this as is
 --------------------------------------------------------------------------------------------------------------
 
 -- Optional. Swap to your sch macro sheet / book
-set_macros(1, 4) -- Sheet, Book
+set_macros(1, 19) -- Sheet, Book
 
 -------------------------------------------------------------
 --      ,---.                         |
@@ -186,7 +186,6 @@ function get_sets()
     -- right_ear = "Hearty Earring",
     -- left_ring = "Shneddick Ring",
     -- right_ring = "Murky Ring",
-    -- back = { name = "Lugh's Cape", augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%', } },
     back = {
       name = "Lugh's Cape",
       augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%' },
@@ -314,7 +313,7 @@ function get_sets()
   -- Then only swap in what under this set after everything else.
   sets.precast.grimoire = {
     head = 'Peda. Mortar. +1',
-    -- feet="Acad. Loafers +4",
+    feet = 'Acad. Loafers +1',
   }
 
   -- Enhancing Magic, eg. Siegal Sash, etc
@@ -335,7 +334,7 @@ function get_sets()
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
   sets.precast['Enlightenment'] = { body = 'Peda. Gown +1' }
-  -- sets.precast["Sublimation"] = { head = "Acad. Mortar. +4", body = "Peda. Gown +2" }
+  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +1' }
 
   ----------
   -- Midcast
@@ -403,7 +402,7 @@ function get_sets()
   -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
   sets.midcast.casting = {}
 
-  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +4', body = 'Peda. Gown +1' }
+  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +1' }
 
   sets.midcast.nuking.normal = {
     main = 'Marin Staff +1',
@@ -430,7 +429,6 @@ function get_sets()
       name = "Lugh's Cape",
       augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%' },
     },
-    -- back = { name = "Lugh's Cape", augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%', } },
   }
   -- used with toggle, default: F10
   -- Pieces to swap from freen nuke to Magic Burst
@@ -474,13 +472,13 @@ function get_sets()
   sets.midcast['Stun'] = {}
   sets.midcast.IntEnfeebling = {
     main = 'Marin Staff +1',
-    -- sub = "Khonsu",
-    ammo = 'Pemphredo Tathlum',
+    sub = 'Kaja Grip',
+    -- ammo = 'Pemphredo Tathlum',
     head = 'Acad. Mortar. +2',
     body = 'Acad. Gown +2',
-    -- hands = "Acad. Bracers +2",
+    hands = "Acad. Bracers +1",
     legs = 'Arbatel Pants +2',
-    -- feet = "Acad. Loafers +4",
+    feet = "Acad. Loafers +1",
     neck = { name = 'Argute Stole +1', augments = { 'Path: A' } },
     -- waist = "Skrymir Cord",
     -- left_ear = "Malignance Earring",
@@ -501,7 +499,7 @@ function get_sets()
     body = 'Arbatel Gown +2',
     -- hands = { name = "Kaykaus Cuffs +1", augments = { 'MP+80', 'MND+12', 'Mag. Acc.+20', } },
     legs = 'Arbatel Pants +2',
-    -- feet = "Acad. Loafers +4",
+    feet = "Acad. Loafers +1",
     neck = { name = 'Argute Stole +1', augments = { 'Path: A' } },
     -- waist = 'Skrymir Cord',
     -- left_ear = "Malignance Earring",
@@ -560,11 +558,7 @@ function get_sets()
     -- left_ear = "Hirudinea Earring",
     -- left_ring = "Evanescence Ring",
     right_ring = 'Archon Ring',
-    -- back = "Bookworm's Cape",
-    back = {
-      name = "Lugh's Cape",
-      augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%' },
-    },
+    back = "Bookworm's Cape",
   })
   sets.midcast['Aspir'] = sets.midcast['Drain']
 
