@@ -166,8 +166,8 @@ function get_sets()
 
   -- Your idle set
   sets.me.idle.refresh = {
-    main = 'Marin Staff',
-    sub = 'Kaja Grip',
+    main = { name = 'Marin Staff +1', priority = 1 },
+    sub = { name = 'Kaja Grip', priority = 2 },
     ammo = 'Staunch Tathlum',
     head = 'Nyame Helm',
     body = "Agwu's Robe",
@@ -267,7 +267,7 @@ function get_sets()
   -- Generic Casting Set that all others take off of. Here you should add all your fast cast
   -- Grimoire: 10(cap:25) / rdm: 15
   sets.precast.casting = {
-    main = 'Marin Staff +1',
+    main = { name = 'Marin Staff +1', priority = 1 },
     sub = 'Kaja Grip',
     ammo = 'Incantor Stone',
     head = { name = 'Merlinic Hood', augments = { '"Fast Cast"+6', 'CHR+3', '"Mag.Atk.Bns."+3' } },
@@ -405,7 +405,7 @@ function get_sets()
   sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +1' }
 
   sets.midcast.nuking.normal = {
-    main = 'Marin Staff +1',
+    main = { name = 'Marin Staff +1', priority = 1 },
     sub = "Elder's Grip +1",
     -- sub="Enki Strap",
     ammo = 'Ghastly Tathlum +1',
@@ -445,7 +445,7 @@ function get_sets()
 
   --DT casting set
   sets.midcast.nuking.DT = {
-    main = 'Marin Staff +1',
+    main = { name = 'Marin Staff +1', priority = 1 },
     sub = 'Kaja Grip',
     ammo = 'Ghastly Tathlum +1',
     head = 'Arbatel Bonnet +2',
@@ -471,14 +471,14 @@ function get_sets()
   -- Xbling
   sets.midcast['Stun'] = {}
   sets.midcast.IntEnfeebling = {
-    main = 'Marin Staff +1',
+    main = { name = 'Marin Staff +1', priority = 1 },
     sub = 'Kaja Grip',
     -- ammo = 'Pemphredo Tathlum',
     head = 'Acad. Mortar. +2',
     body = 'Acad. Gown +2',
-    hands = "Acad. Bracers +1",
+    hands = 'Acad. Bracers +1',
     legs = 'Arbatel Pants +2',
-    feet = "Acad. Loafers +1",
+    feet = 'Acad. Loafers +1',
     neck = { name = 'Argute Stole +1', augments = { 'Path: A' } },
     -- waist = "Skrymir Cord",
     -- left_ear = "Malignance Earring",
@@ -492,14 +492,14 @@ function get_sets()
     },
   }
   sets.midcast.MndEnfeebling = {
-    main = 'Marin Staff +1',
+    main = { name = 'Marin Staff +1', priority = 1 },
     sub = 'Khonsu',
     -- ammo = "Pemphredo Tathlum",
     head = 'Acad. Mortar. +2',
     body = 'Arbatel Gown +2',
     -- hands = { name = "Kaykaus Cuffs +1", augments = { 'MP+80', 'MND+12', 'Mag. Acc.+20', } },
     legs = 'Arbatel Pants +2',
-    feet = "Acad. Loafers +1",
+    feet = 'Acad. Loafers +1',
     neck = { name = 'Argute Stole +1', augments = { 'Path: A' } },
     -- waist = 'Skrymir Cord',
     -- left_ear = "Malignance Earring",
