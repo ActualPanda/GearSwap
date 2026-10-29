@@ -370,6 +370,7 @@ function get_sets()
     -- body = { name = 'Telchine Chas.', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- hands = { name = 'Telchine Gloves', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- legs = { name = 'Telchine Braconi', augments = { 'Enh. Mag. eff. dur. +10' } },
+    feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
     -- feet = { name = 'Telchine Pigaches', augments = { 'Enh. Mag. eff. dur. +10' } },
     -- neck = "Incanter's Torque",
     waist = 'Olympus Sash',
