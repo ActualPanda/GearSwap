@@ -195,7 +195,7 @@ function get_sets()
   -- Your idle Sublimation set combine from refresh or DT depening on mode.
   sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
     head = 'Acad. Mortar. +2',
-    body = 'Peda. Gown +2',
+    body = 'Peda. Gown +3',
     waist = 'Embla Sash',
   })
   -- Your idle DT set
@@ -334,8 +334,8 @@ function get_sets()
   sets.precast['Enlightenment'] = {}
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
-  sets.precast['Enlightenment'] = { body = 'Peda. Gown +2' }
-  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +2' }
+  sets.precast['Enlightenment'] = { body = 'Peda. Gown +3' }
+  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +3' }
 
   ----------
   -- Midcast
@@ -403,7 +403,7 @@ function get_sets()
   -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
   sets.midcast.casting = {}
 
-  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +2' }
+  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +3' }
 
   sets.midcast.nuking.normal = {
     main = { name = 'Marin Staff +1', priority = 1 },
@@ -520,7 +520,7 @@ function get_sets()
     -- sub = 'Oneiros Grip',
     -- ammo = 'Pemphredo Tathlum',
     -- head = { name = "Telchine Cap", augments = { 'Enh. Mag. eff. dur. +10', } },
-    -- body = "Peda. Gown +2",
+    body = "Peda. Gown +3",
     hands = 'Arbatel Bracers +2',
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
@@ -573,6 +573,7 @@ function get_sets()
     head = 'Kaykaus Mitra',
     -- hands = "Peda. Bracers +2",
     legs = 'Gyve Trousers',
+    waist = "Austerity Belt +1",
     -- right_ear = "Magnetic Earring",
     left_ring = "Sirona's Ring",
     -- right_ring = "Mephitas's Ring",
@@ -598,7 +599,7 @@ function get_sets()
     -- sub = "Khonsu",
     -- ammo = "Pemphredo Tathlum",
     head = 'Arbatel Bonnet +2',
-    body =  "Peda. Gown +2",
+    body =  "Peda. Gown +3",
     -- hands = { name = "Telchine Gloves", augments = { 'Enh. Mag. eff. dur. +9', } },
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
