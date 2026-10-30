@@ -508,7 +508,7 @@ function get_sets()
   -- Job Abilities
   sets.JA = {}
   sets.JA['Wild Card'] = {
-    feet = { name = 'Lanun Bottes +3', augments = { 'Enhances "Wild Card" effect' } },
+    feet = { name = 'Lanun Bottes +4', augments = { 'Enhances "Wild Card" effect' } },
   }
   sets.JA['Phantom Roll'] = {}
   sets.JA['Random Deal'] = {
@@ -587,7 +587,7 @@ function get_sets()
     body = { name = 'Nyame Mail', augments = { 'Path: B' } },
     hands = "Chasseur's Gants +2",
     legs = { name = 'Nyame Flanchard', augments = { 'Path: B' } },
-    feet = 'Lanun Bottes +3',
+    feet = 'Lanun Bottes +4',
     neck = { name = 'Comm. Charm +1', augments = { 'Path: A' } },
     -- neck = { name = 'Comm. Charm +2', augments = { 'Path: A' } },
     waist = { name = 'Sailfi Belt +1' },
@@ -617,7 +617,7 @@ function get_sets()
   sets.WS.MAB = set_combine(sets.WS, {
     ammo = Ammo.Bullet.MAB,
     body = 'Lanun Frac +3',
-    feet = 'Lanun Bottes +3',
+    feet = 'Lanun Bottes +4',
     waist = 'Eschan Stone',
     neck = { name = 'Comm. Charm +1', augments = { 'Path: A' } },
     right_ear = 'Friomisi Earring',
