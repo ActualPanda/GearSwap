@@ -195,7 +195,7 @@ function get_sets()
   -- Your idle Sublimation set combine from refresh or DT depening on mode.
   sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
     head = 'Acad. Mortar. +2',
-    body = 'Peda. Gown +1',
+    body = 'Peda. Gown +2',
     waist = 'Embla Sash',
   })
   -- Your idle DT set
@@ -268,7 +268,8 @@ function get_sets()
   -- Grimoire: 10(cap:25) / rdm: 15
   sets.precast.casting = {
     main = { name = 'Marin Staff +1', priority = 1 },
-    sub = 'Kaja Grip',
+    sub = { name = 'Kaja Grip', priority = 2 },
+
     ammo = 'Incantor Stone',
     head = { name = 'Merlinic Hood', augments = { '"Fast Cast"+6', 'CHR+3', '"Mag.Atk.Bns."+3' } },
     body = "Agwu's Robe",
@@ -333,8 +334,8 @@ function get_sets()
   sets.precast['Enlightenment'] = {}
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
   -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
-  sets.precast['Enlightenment'] = { body = 'Peda. Gown +1' }
-  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +1' }
+  sets.precast['Enlightenment'] = { body = 'Peda. Gown +2' }
+  sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +2' }
 
   ----------
   -- Midcast
@@ -402,7 +403,7 @@ function get_sets()
   -- Whatever you want to equip mid-cast as a catch all for all spells, and we'll overwrite later for individual spells
   sets.midcast.casting = {}
 
-  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +1' }
+  sets.midcast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +2' }
 
   sets.midcast.nuking.normal = {
     main = { name = 'Marin Staff +1', priority = 1 },
@@ -446,7 +447,7 @@ function get_sets()
   --DT casting set
   sets.midcast.nuking.DT = {
     main = { name = 'Marin Staff +1', priority = 1 },
-    sub = 'Kaja Grip',
+    sub = { name = 'Kaja Grip', priority = 2 },
     ammo = 'Ghastly Tathlum +1',
     head = 'Arbatel Bonnet +2',
     body = 'Jhakri Robe +2',
@@ -472,7 +473,7 @@ function get_sets()
   sets.midcast['Stun'] = {}
   sets.midcast.IntEnfeebling = {
     main = { name = 'Marin Staff +1', priority = 1 },
-    sub = 'Kaja Grip',
+    sub = { name = 'Kaja Grip', priority = 2 },
     -- ammo = 'Pemphredo Tathlum',
     head = 'Acad. Mortar. +2',
     body = 'Acad. Gown +2',
@@ -597,10 +598,10 @@ function get_sets()
     -- sub = "Khonsu",
     -- ammo = "Pemphredo Tathlum",
     head = 'Arbatel Bonnet +2',
-    -- body = { name = "Telchine Chas.", augments = { 'Enh. Mag. eff. dur. +10', } },
+    body =  "Peda. Gown +2",
     -- hands = { name = "Telchine Gloves", augments = { 'Enh. Mag. eff. dur. +9', } },
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
-    feet={ name="Telchine Pigaches", augments={'Mag. Evasion+24','"Conserve MP"+3','Enh. Mag. eff. dur. +9',}},
+    feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
     -- neck = "Warder's Charm +1",
     waist = 'Embla Sash',
     -- left_ear = "Mimir Earring",
