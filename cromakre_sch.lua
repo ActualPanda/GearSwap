@@ -78,7 +78,7 @@ include('Modes.lua')
 -- to define sets for idle if you add more modes, name them: sets.me.idle.mymode and add 'mymode' in the group.
 -- to define sets for regen if you add more modes, name them: sets.midcast.regen.mymode and add 'mymode' in the group.
 -- Same idea for nuke modes.
-idleModes = M('refresh', 'dt', 'mdt')
+idleModes = M('mp', 'dt')
 regenModes = M('hybrid', 'duration', 'potency')
 -- To add a new mode to nuking, you need to define both sets: sets.midcast.nuking.mynewmode as well as sets.midcast.MB.mynewmode
 nukeModes = M('normal', 'acc', 'DT')
@@ -142,7 +142,7 @@ end
 
 --------------------------------------------------------------------------------------------------------------
 include('SCH_Lib.lua') -- leave this as is
-refreshType = idleModes[1] -- leave this as is
+refreshType = 'refresh' -- leave this as is
 --------------------------------------------------------------------------------------------------------------
 
 -- Optional. Swap to your sch macro sheet / book
@@ -165,10 +165,10 @@ function get_sets()
   sets.me.idle = {} -- leave this empty
 
   -- Your idle set
-  sets.me.idle.refresh = {
-    main = { name = 'Marin Staff +1', priority = 1 },
-    sub = { name = 'Kaja Grip', priority = 2 },
-    ammo = 'Staunch Tathlum',
+  sets.me.idle = {
+    main = { name = 'Marin Staff +1', priority = 2 },
+    sub = { name = 'Kaja Grip', priority = 1 },
+    ammo = 'Homiliary',
     head = 'Nyame Helm',
     body = "Agwu's Robe",
     -- body = "Arbatel Gown +2",
@@ -192,15 +192,18 @@ function get_sets()
     },
   }
 
-  -- Your idle Sublimation set combine from refresh or DT depening on mode.
-  sets.me.idle.sublimation = set_combine(sets.me.idle.refresh, {
+  sets.me.idle.sublimation = {
     head = 'Acad. Mortar. +2',
     body = 'Peda. Gown +3',
     waist = 'Embla Sash',
-  })
+  }
+  sets.me.idle.mp = {}
+  -- Your idle Sublimation set combine from refresh or DT depening on mode.
   -- Your idle DT set
-  sets.me.idle.dt = set_combine(sets.me.idle[refreshType], {})
-  sets.me.idle.mdt = set_combine(sets.me.idle[refreshType], {})
+  sets.me.idle.dt = {
+    ammo = 'Staunch Tathlum',
+    legs = 'Nyame Flanchard',
+  }
   -- Your MP Recovered Whilst Resting Set
   sets.me.resting = {}
 
@@ -267,9 +270,8 @@ function get_sets()
   -- Generic Casting Set that all others take off of. Here you should add all your fast cast
   -- Grimoire: 10(cap:25) / rdm: 15
   sets.precast.casting = {
-    main = { name = 'Marin Staff +1', priority = 1 },
-    sub = { name = 'Kaja Grip', priority = 2 },
-
+    main = { name = 'Marin Staff +1', priority = 2 },
+    sub = { name = 'Kaja Grip', priority = 1 },
     ammo = 'Incantor Stone',
     head = { name = 'Merlinic Hood', augments = { '"Fast Cast"+6', 'CHR+3', '"Mag.Atk.Bns."+3' } },
     body = "Agwu's Robe",
@@ -284,7 +286,7 @@ function get_sets()
     right_ring = 'Weather. Ring',
     back = {
       name = "Lugh's Cape",
-      augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%' },
+      augments = { 'MND+20', 'Eva.+20 /Mag. Eva.+20', 'MND+5', '"Fast Cast"+10', 'Damage taken-5%' },
     },
     -- main = { name = "Pedagogy Staff", augments = { 'Path: C', } },
     -- sub = "Clerisy Strap +1",
@@ -330,10 +332,9 @@ function get_sets()
   -- Ability Precasting
   ---------------------
 
-  sets.precast['Tabula Rasa'] = {}
   sets.precast['Enlightenment'] = {}
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2' }
-  -- sets.precast["Tabula Rasa"] = { legs = "Pedagogy Pants +1" }
+  sets.precast['Tabula Rasa'] = { legs = 'Peda. Pants +1' }
   sets.precast['Enlightenment'] = { body = 'Peda. Gown +3' }
   sets.precast['Sublimation'] = { head = 'Acad. Mortar. +2', body = 'Peda. Gown +3' }
 
@@ -380,7 +381,7 @@ function get_sets()
 
   sets.midcast.HelixI = {
     -- main = "Earth Staff", --20PDT
-    sub = 'Khonsu', --5DT
+    -- sub = 'Kaja Grip', --5DT
     ammo = 'Staunch tathlum', --2DT
     head = 'Vanya Hood', --2MDT
     body = 'Mallquis Saio', --5DT
@@ -410,8 +411,8 @@ function get_sets()
     sub = "Elder's Grip +1",
     -- sub="Enki Strap",
     ammo = 'Ghastly Tathlum +1',
-    -- head = 'Arbatel Bonnet +2',
-    head = 'Peda. Mortar. +1',
+    head = 'Arbatel Bonnet +2',
+    -- head = 'Peda. Mortar. +1',
     body = 'Jhakri Robe +2',
     -- body = "Arbatel Gown +2",
     hands = 'Arbatel Bracers +2',
@@ -446,8 +447,8 @@ function get_sets()
 
   --DT casting set
   sets.midcast.nuking.DT = {
-    main = { name = 'Marin Staff +1', priority = 1 },
-    sub = { name = 'Kaja Grip', priority = 2 },
+    main = { name = 'Marin Staff +1', priority = 2 },
+    sub = { name = 'Kaja Grip', priority = 1 },
     ammo = 'Ghastly Tathlum +1',
     head = 'Arbatel Bonnet +2',
     body = 'Jhakri Robe +2',
@@ -472,8 +473,8 @@ function get_sets()
   -- Xbling
   sets.midcast['Stun'] = {}
   sets.midcast.IntEnfeebling = {
-    main = { name = 'Marin Staff +1', priority = 1 },
-    sub = { name = 'Kaja Grip', priority = 2 },
+    main = { name = 'Marin Staff +1', priority = 2 },
+    sub = { name = 'Kaja Grip', priority = 1 },
     -- ammo = 'Pemphredo Tathlum',
     head = 'Acad. Mortar. +2',
     body = 'Acad. Gown +2',
@@ -493,8 +494,8 @@ function get_sets()
     },
   }
   sets.midcast.MndEnfeebling = {
-    main = { name = 'Marin Staff +1', priority = 1 },
-    sub = 'Khonsu',
+    main = { name = 'Marin Staff +1', priority = 2 },
+    sub = { name = 'Kaja Grip', priority = 1 },
     -- ammo = "Pemphredo Tathlum",
     head = 'Acad. Mortar. +2',
     body = 'Arbatel Gown +2',
@@ -510,7 +511,7 @@ function get_sets()
     -- back = "Aurist's Cape +1",
     back = {
       name = "Lugh's Cape",
-      augments = { 'INT+20', 'Mag. Acc+20 /Mag. Dmg.+20', 'INT+10', '"Mag.Atk.Bns."+10', 'Damage taken-5%' },
+      augments = { 'MND+20', 'Eva.+20 /Mag. Eva.+20', 'MND+5', '"Fast Cast"+10', 'Damage taken-5%' },
     },
   }
 
@@ -520,7 +521,7 @@ function get_sets()
     -- sub = 'Oneiros Grip',
     -- ammo = 'Pemphredo Tathlum',
     -- head = { name = "Telchine Cap", augments = { 'Enh. Mag. eff. dur. +10', } },
-    body = "Peda. Gown +3",
+    body = 'Peda. Gown +3',
     hands = 'Arbatel Bracers +2',
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
@@ -553,6 +554,7 @@ function get_sets()
     -- head = "Pixie Hairpin +1",
     body = 'Acad. Gown +2',
     -- feet = "Agwu's Pigaches",
+    legs = 'Peda. Pants +1',
     feet = { name = 'Merlinic Crackows', augments = { '"Fast Cast"+5', 'INT+1', 'Mag. Acc.+14' } },
     -- neck = "Erra Pendant",
     waist = 'Fucho-no-Obi',
@@ -569,22 +571,25 @@ function get_sets()
     main = "Bunzi's Rod",
     sub = 'Sors Shield',
     -- ammo = "Pemphredo Tathlum",
-    -- head = "Vanya Hood",
-    head = 'Kaykaus Mitra',
-    -- hands = "Peda. Bracers +2",
-    legs = 'Gyve Trousers',
-    waist = "Austerity Belt +1",
+    head = 'Vanya Hood',
+    body = 'Vanya Robe',
+    hands = 'Peda. Bracers +3',
+    legs = 'Vanya Slops',
+    waist = 'Austerity Belt +1',
     -- right_ear = "Magnetic Earring",
     left_ring = "Sirona's Ring",
     -- right_ring = "Mephitas's Ring",
     -- back = "Fi Follet Cape +1",
-    back = 'Altruistic Cape',
+    back = {
+      name = "Lugh's Cape",
+      augments = { 'MND+20', 'Eva.+20 /Mag. Eva.+20', 'MND+5', '"Fast Cast"+10', 'Damage taken-5%' },
+    },
   })
   sets.midcast.cure.weather = set_combine(sets.midcast.cure.normal, {
-    -- main = "Chatoyant Staff",
-    -- sub = "Khonsu",
-    -- waist = 'Fucho-no-Obi',
+    main = 'Chatoyant Staff',
+    sub = 'Kaja Grip',
     waist = 'Hachirin-no-Obi',
+    -- waist = 'Fucho-no-Obi',
   })
 
   ------------
@@ -599,7 +604,7 @@ function get_sets()
     -- sub = "Khonsu",
     -- ammo = "Pemphredo Tathlum",
     head = 'Arbatel Bonnet +2',
-    body =  "Peda. Gown +3",
+    body = 'Peda. Gown +3',
     -- hands = { name = "Telchine Gloves", augments = { 'Enh. Mag. eff. dur. +9', } },
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
