@@ -435,8 +435,11 @@ function get_sets()
   -- used with toggle, default: F10
   -- Pieces to swap from freen nuke to Magic Burst
   sets.midcast.MB.normal = set_combine(sets.midcast.nuking.normal, {
+    head = "Agwu's Cap",
     body = "Agwu's Robe",
+    hands = "Agwu's Gages",
     legs = "Agwu's Slops",
+    feet = "Agwu's Pigaches",
     -- left_ring = "Mujin Band",
   })
 
@@ -555,7 +558,7 @@ function get_sets()
     body = 'Acad. Gown +2',
     -- feet = "Agwu's Pigaches",
     legs = 'Peda. Pants +1',
-    feet = { name = 'Merlinic Crackows', augments = { '"Fast Cast"+5', 'INT+1', 'Mag. Acc.+14' } },
+    feet = "Agwu's Pigaches",
     -- neck = "Erra Pendant",
     waist = 'Fucho-no-Obi',
     -- left_ear = "Hirudinea Earring",
@@ -628,6 +631,12 @@ function get_sets()
     -- legs = { name = "Telchine Braconi", augments = { '"Regen" potency+2', } },
     -- feet = { name = "Telchine Pigaches", augments = { '"Regen" potency+3', } },
     back = { name = "Bookworm's Cape", augments = { 'INT+2', 'Helix eff. dur. +20', '"Regen" potency+8' } },
+  })
+
+  sets.midcast['Cursna'] = set_combine(sets.midcast.casting, {
+    neck = "Nicander's Necklace",
+    waist = 'Gishdubar Sash',
+    right_ring = 'Ephedra Ring',
   })
 
   ------------
