@@ -170,8 +170,7 @@ function get_sets()
     sub = { name = 'Kaja Grip', priority = 1 },
     ammo = 'Homiliary',
     head = 'Nyame Helm',
-    body = "Agwu's Robe",
-    -- body = "Arbatel Gown +2",
+    body = 'Arbatel Gown +3',
     hands = 'Nyame Gauntlets',
     legs = "Agwu's Slops",
     feet = 'Nyame Sollerets',
@@ -243,8 +242,8 @@ function get_sets()
   -- Gear that needs to be worn to **actively** enhance a current player buff.
   -- Fill up following with your avaible pieces.
   sets.buff['Rapture'] = { head = 'Arbatel Bonnet +2' }
-  sets.buff['Perpetuance'] = { hands = 'Arbatel Bracers +2' }
-  sets.buff['Immanence'] = { hands = 'Arbatel Bracers +2' }
+  sets.buff['Perpetuance'] = { hands = 'Arbatel Bracers +3' }
+  sets.buff['Immanence'] = { hands = 'Arbatel Bracers +3' }
   sets.buff['Penury'] = { legs = 'Arbatel Pants +2' }
   sets.buff['Parsimony'] = { legs = 'Arbatel Pants +2' }
   sets.buff['Celerity'] = {}
@@ -315,7 +314,7 @@ function get_sets()
   -- Dont set_combine here, as this is the last step of the precast, it will have sorted all the needed pieces already based on type of spell.
   -- Then only swap in what under this set after everything else.
   sets.precast.grimoire = {
-    head = 'Peda. Mortar. +1',
+    head = 'Peda. M.Board +1',
     feet = 'Acad. Loafers +1',
   }
 
@@ -384,8 +383,8 @@ function get_sets()
     -- sub = 'Kaja Grip', --5DT
     ammo = 'Staunch tathlum', --2DT
     head = 'Vanya Hood', --2MDT
-    body = 'Mallquis Saio', --5DT
-    hands = 'Acad. Bracers +2',
+    -- body = 'Mallquis Saio', --5DT
+    hands = 'Acad. Bracers +1',
     -- legs = "Bokwus Slops",  --4MDT
     feet = 'Mallquis Clogs +1',
     neck = 'Loricate Torque', --6DT
@@ -411,11 +410,10 @@ function get_sets()
     sub = "Elder's Grip +1",
     -- sub="Enki Strap",
     ammo = 'Ghastly Tathlum +1',
-    head = 'Arbatel Bonnet +2',
+    head = "Agwu's Cap",
     -- head = 'Peda. Mortar. +1',
-    body = 'Jhakri Robe +2',
-    -- body = "Arbatel Gown +2",
-    hands = 'Arbatel Bracers +2',
+    body = 'Arbatel Gown +3',
+    hands = 'Arbatel Bracers +3',
     legs = 'Arbatel Pants +2',
     feet = 'Arbatel Loafers +2',
     neck = 'Argute Stole +1',
@@ -501,7 +499,7 @@ function get_sets()
     sub = { name = 'Kaja Grip', priority = 1 },
     -- ammo = "Pemphredo Tathlum",
     head = 'Acad. Mortar. +2',
-    body = 'Arbatel Gown +2',
+    body = 'Arbatel Gown +3',
     -- hands = { name = "Kaykaus Cuffs +1", augments = { 'MP+80', 'MND+12', 'Mag. Acc.+20', } },
     legs = 'Arbatel Pants +2',
     feet = 'Acad. Loafers +1',
@@ -525,7 +523,7 @@ function get_sets()
     -- ammo = 'Pemphredo Tathlum',
     -- head = { name = "Telchine Cap", augments = { 'Enh. Mag. eff. dur. +10', } },
     body = 'Peda. Gown +3',
-    hands = 'Arbatel Bracers +2',
+    hands = 'Arbatel Bracers +3',
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
     -- neck = "Warder's Charm +1",
@@ -608,6 +606,7 @@ function get_sets()
     -- ammo = "Pemphredo Tathlum",
     head = 'Arbatel Bonnet +2',
     body = 'Peda. Gown +3',
+    -- hands = 'Arbatel Bracers +3',
     -- hands = { name = "Telchine Gloves", augments = { 'Enh. Mag. eff. dur. +9', } },
     -- legs = { name = "Telchine Braconi", augments = { 'Enh. Mag. eff. dur. +10', } },
     feet = { name = 'Telchine Pigaches', augments = { 'Mag. Evasion+24', '"Conserve MP"+3', 'Enh. Mag. eff. dur. +9' } },
