@@ -213,7 +213,7 @@ function get_sets()
 
   sets.precast['Enhancing Magic'] = set_combine(sets.precast.default, {
     waist = 'Siegel Sash',
-    right_ear = 'Lethargy Earring',
+    right_ear = 'Leth. Earring +1',
   })
 
   sets.midcast = {}
@@ -401,7 +401,7 @@ function get_sets()
     neck = 'Loricate Torque',
     waist = 'Olympus Sash',
     left_ear = 'Alabaster Earring',
-    right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
+    right_ear = { name = 'Leth. Earring +1', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
     left_ring = 'Defending Ring',
     right_ring = 'Ayanmo Ring',
     back = {
@@ -430,7 +430,7 @@ function get_sets()
       neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },
       waist = 'Embla Sash',
       left_ear = 'Alabaster Earring',
-      right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
+      right_ear = { name = 'Leth. Earring +1', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
       left_ring = 'Defending Ring',
       right_ring = 'Ayanmo Ring',
       back = {
@@ -448,7 +448,7 @@ function get_sets()
       neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },
       waist = 'Embla Sash',
       left_ear = 'Alabaster Earring',
-      right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
+      right_ear = { name = 'Leth. Earring +1', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
       left_ring = 'Defending Ring',
       right_ring = 'Ayanmo Ring',
       back = {
@@ -469,7 +469,7 @@ function get_sets()
       neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },
       waist = 'Gishdubar Sash',
       left_ear = 'Alabaster Earring',
-      right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
+      right_ear = { name = 'Leth. Earring +1', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
       left_ring = 'Defending Ring',
       right_ring = 'Ayanmo Ring',
       back = {
@@ -487,7 +487,7 @@ function get_sets()
       neck = { name = 'Dls. Torque +1', augments = { 'Path: A' } },
       waist = 'Embla Sash',
       left_ear = 'Alabaster Earring',
-      right_ear = { name = 'Lethargy Earring', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
+      right_ear = { name = 'Leth. Earring +1', augments = { 'System: 1 ID: 1676 Val: 0', 'Accuracy+7', 'Mag. Acc.+7' } },
       left_ring = 'Defending Ring',
       right_ring = 'Ayanmo Ring',
       back = {
