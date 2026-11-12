@@ -9,6 +9,7 @@ local jp_mode = false
 local bindings = {
   ['^#'] = 'gs c echodrops',
   ['^R'] = 'gs c toggle_speed',
+  ['^F5'] = 'gs c toggle_phalanx',
   ['^F4'] = 'gs c cycle_shield',
   ['^F3'] = 'gs c cycle_weapon',
   ['^F2'] = 'gs c cycle_tp',
@@ -27,6 +28,7 @@ local weapon = M({
 })
 local shield = M({ ['description'] = 'What shield to use', 'Priwen', 'Unlocked' })
 local run = M(false, 'If should equip movement gear')
+local phalanx = false
 
 send_command('bind ^a gs c nothing')
 
@@ -384,6 +386,13 @@ function self_command(command)
     shield:cycle()
     send_command('@input /echo Shield: ' .. shield.current)
     refresh()
+  elseif command == 'toggle_phalanx' then
+    phalanx = not phalanx
+    if phalanx then
+      equip(sets.midcast['Phalanx'])
+    else
+      refresh()
+    end
   end
 end
 
