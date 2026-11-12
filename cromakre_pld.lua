@@ -54,11 +54,234 @@ local function set_lockstyle()
   send_command('wait 10; input /lockstyleset ' .. lockstyleset)
 end
 
-local function equip_idle()
-  equip(sets.weapons[weapon.current], sets.shields[shield.current], sets.idle[idle_mode.current])
-  if run.value then
-    equip(sets.idle.speed)
+local hp_resource_names
+local hp_priority_warnings = {}
+local hp_assigned_priorities = setmetatable({}, { __mode = 'k' })
+
+local function hp_item_name(piece)
+  if piece == empty then
+    return 'empty'
   end
+  local name = type(piece) == 'table' and piece.name or piece
+  if type(name) ~= 'string' then
+    return nil
+  end
+  name = name:lower()
+  return hp_resource_names[name] or name
+end
+
+local function set_hp_priorities()
+  for _, piece in pairs(gearswap.equip_list) do
+    local original = type(piece) == 'table' and hp_assigned_priorities[piece]
+    if original then
+      piece.priority = original.priority
+    end
+  end
+
+  if next(gearswap.equip_list) == nil then
+    return
+  end
+
+  if not hp_resource_names then
+    hp_resource_names = {}
+    for _, item in pairs(gearswap.res.items) do
+      local name, log_name = item[language], item[language .. '_log']
+      if name then
+        hp_resource_names[name:lower()] = name:lower()
+        if log_name then
+          hp_resource_names[log_name:lower()] = name:lower()
+        end
+      end
+    end
+  end
+
+  local catalog, visited = {}, {}
+
+  local function collect(set)
+    if type(set) ~= 'table' or visited[set] then
+      return
+    end
+    visited[set] = true
+
+    if type(set.name) == 'string' and type(set.hp) == 'number' then
+      local name = hp_item_name(set)
+      if name then
+        local previous = catalog[name]
+        if previous == nil then
+          catalog[name] = set
+        elseif previous and (previous.hp ~= set.hp or (previous.hp_percent or 0) ~= (set.hp_percent or 0)) then
+          catalog[name] = false
+        end
+      end
+    end
+
+    for _, value in pairs(set) do
+      collect(value)
+    end
+  end
+
+  collect(sets)
+  collect(gear)
+
+  local function warn(reason)
+    if not hp_priority_warnings[reason] then
+      gearswap.msg.debugging('HP priorities: keeping manual priorities; ' .. reason)
+      hp_priority_warnings[reason] = true
+    end
+    print(reason)
+  end
+
+  local function metadata(piece)
+    local name = hp_item_name(piece)
+    if name == 'empty' then
+      return { hp = 0 }
+    end
+    if type(piece) == 'table' and type(piece.hp) == 'number' then
+      return piece
+    end
+    return name and catalog[name]
+  end
+
+  local future, history = gearswap.equip_list, gearswap.equip_list_history
+  local changes, belt = {}, nil
+  local old_belt = player.equipment.waist
+
+  if hp_item_name(history.waist) == hp_item_name(old_belt) then
+    old_belt = history.waist
+  end
+
+  old_belt = metadata(old_belt)
+  if not old_belt then
+    warn('missing or ambiguous HP metadata for the equipped waist.')
+    return
+  end
+
+  local current_percent = old_belt.hp_percent or 0
+
+  for slot_id = 0, 15 do
+    local slot = gearswap.default_slot_map[slot_id]
+    local piece = future[slot]
+    local name = hp_item_name(piece)
+
+    if name and not gearswap.encumbrance_table[slot_id] then
+      if piece == empty then
+        warn('explicit unequips cannot carry an equipment priority.')
+        return
+      end
+
+      local current = player.equipment[slot]
+      if hp_item_name(history[slot]) == hp_item_name(current) then
+        current = history[slot]
+      end
+
+      local outgoing, incoming = metadata(current), metadata(piece)
+      if not outgoing or not incoming then
+        warn('missing or ambiguous HP metadata for ' .. slot .. ' (' .. tostring(player.equipment[slot]) .. ').')
+        return
+      end
+
+      local change = {
+        slot = slot,
+        piece = piece,
+        delta = incoming.hp - outgoing.hp,
+        slot_id = slot_id,
+      }
+
+      if slot == 'waist' then
+        belt = change
+        belt.percent = incoming.hp_percent or 0
+      else
+        if (outgoing.hp_percent or 0) ~= 0 or (incoming.hp_percent or 0) ~= 0 then
+          warn('percentage HP outside the waist slot is not supported.')
+          return
+        end
+        changes[#changes + 1] = change
+      end
+    end
+  end
+
+  if #changes == 0 and not belt then
+    return
+  end
+
+  if type(player.max_hp) ~= 'number' or player.max_hp <= 0 then
+    warn('maximum HP is unavailable.')
+    return
+  end
+
+  table.sort(changes, function(a, b)
+    if a.delta == b.delta then
+      return a.slot_id < b.slot_id
+    end
+    return a.delta > b.delta
+  end)
+
+  local best_order, best_minimum, best_sum
+
+  for position = 0, (belt and #changes or 0) do
+    local order = {}
+
+    for i = 0, #changes do
+      if belt and i == position then
+        order[#order + 1] = belt
+      end
+      if changes[i + 1] then
+        order[#order + 1] = changes[i + 1]
+      end
+    end
+
+    local base_hp = math.ceil(player.max_hp / (1 + current_percent / 100) - 0.000001)
+    local percent, minimum, sum = current_percent, player.max_hp, 0
+
+    for _, change in ipairs(order) do
+      base_hp = base_hp + change.delta
+      if belt and change == belt then
+        percent = belt.percent
+      end
+
+      local maximum = math.floor(base_hp * (1 + percent / 100) + 0.000001)
+      minimum = math.min(minimum, maximum)
+      sum = sum + maximum
+    end
+
+    if not best_order or minimum > best_minimum or (minimum < best_minimum and sum > best_sum) then
+      best_order, best_minimum, best_sum = order, minimum, sum
+    end
+  end
+
+  for i, change in ipairs(best_order) do
+    local piece = {}
+
+    if type(change.piece) == 'table' and change.piece ~= empty then
+      for key, value in pairs(change.piece) do
+        piece[key] = value
+      end
+    else
+      piece.name = change.piece
+    end
+
+    if change.piece ~= empty then
+      hp_assigned_priorities[piece] = { priority = piece.priority }
+      piece.priority = #best_order - i + 1
+      future[change.slot] = piece
+    end
+  end
+end
+
+local original_equip = equip
+
+function equip(...)
+  original_equip(...)
+  set_hp_priorities()
+end
+
+local function equip_idle()
+  equip(
+    sets.weapons[weapon.current],
+    sets.shields[shield.current],
+    sets.idle[idle_mode.current],
+    run.value and sets.idle.speed or {}
+  )
 end
 
 local function equip_tp()
@@ -87,56 +310,34 @@ local function weathercheck(spell_element, set)
   end
 end
 
-local function set_priorities(key)
-  local future, current = gearswap.equip_list, gearswap.equip_list_history
-  local function get_val(piece, key)
-    if piece and type(piece) == 'table' and piece[key] and type(piece[key]) == 'number' then
-      return piece[key]
-    end
-    return 0
-  end
-  for i, v in pairs(future) do
-    local priority = get_val(future[i], key) - get_val(current[i], key)
-    if type(v) == 'table' then
-      future[i].priority = priority
-    else
-      future[i] = { name = v, priority = priority }
-    end
-  end
-end
-
 -- custom functions
 ------------------------------
 function get_sets()
   sets.weapons = {
-    ['Sakpata'] = { main = "Sakpata's Sword" },
+    ['Sakpata'] = { main = { name = "Sakpata's Sword", hp = 100 } },
     ['Brilliance'] = { main = 'Brilliance' },
     ['Naegling'] = { main = 'Naegling' },
     ['Mafic Cudgel'] = { main = 'Mafic Cudgel' },
     ['Unlocked'] = { main = '' },
   }
   sets.shields = {
-    ['Priwen'] = { sub = 'Priwen' },
+    ['Priwen'] = { sub = { name = 'Priwen', hp = 30 } },
   }
 
   sets.idle = {}
   sets.idle.dt = {
-    ammo = 'Staunch Tathlum',
+    ammo = { name = 'Staunch Tathlum', hp = 0 },
     head = { name = 'Chev. Armet +2', hp = 135 },
     body = { name = "Sakpata's Plate", hp = 136 },
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
+    hands = { name = "Sakpata's Gauntlets", hp = 91 },
     legs = { name = 'Chev. Cuisses +2', hp = 117 },
     feet = { name = "Sakpata's Leggings", hp = 68 },
-    neck = { name = 'Elite Royal Collar' },
-    waist = { name = 'Creed Baudrier', hp = 40 },
+    neck = { name = 'Elite Royal Collar', hp = 0 },
+    waist = { name = 'Platinum Moogle Belt', hp = 0, hp_percent = 10 },
     left_ear = { name = 'Alabaster Earring', hp = 100 },
     right_ear = { name = 'Tuisto Earring', hp = 150 },
-    left_ring = { name = "Warden's Ring" },
-    right_ring = { name = "K'ayres Ring", hp = 70 },
+    left_ring = { name = "Warden's Ring", hp = 0 },
+    right_ring = { name = 'Supershear Ring', hp = 30 },
     back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
 
@@ -146,27 +347,25 @@ function get_sets()
 
   sets.tp = {}
   sets.tp.dt = {
-    ammo = 'Staunch Tathlum',
+    ammo = { name = 'Staunch Tathlum', hp = 0 },
     head = { name = 'Chev. Armet +2', hp = 135 },
     body = { name = "Sakpata's Plate", hp = 136 },
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
+    hands = { name = "Sakpata's Gauntlets", hp = 91 },
     legs = { name = 'Chev. Cuisses +2', hp = 117 },
     feet = { name = "Sakpata's Leggings", hp = 68 },
-    neck = { name = 'Elite Royal Collar' },
-    waist = { name = 'Creed Baudrier', hp = 40 },
+    neck = { name = 'Elite Royal Collar', hp = 0 },
+    waist = { name = 'Platinum Moogle Belt', hp = 0, hp_percent = 10 },
     left_ear = { name = 'Alabaster Earring', hp = 100 },
     right_ear = { name = 'Tuisto Earring', hp = 150 },
-    left_ring = { name = "Warden's Ring" },
-    right_ring = { name = "K'ayres Ring", hp = 70 },
+    left_ring = { name = "Warden's Ring", hp = 0 },
+    right_ring = { name = 'Supershear Ring', hp = 30 },
     back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
 
   sets.precast = {}
   sets.precast.default = {
+    ammo = { name = 'Staunch Tathlum', hp = 0 },
+    head = { name = 'Chev. Armet +2', hp = 135 },
     body = { name = "Sakpata's Plate", hp = 136 },
     hands = {
       name = 'Souv. Handsch. +1',
@@ -175,88 +374,85 @@ function get_sets()
     },
     legs = {
       name = 'Souv. Diechlings +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%', hp = 162 },
+      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
+      hp = 161,
     },
-    head = { name = 'Chev. Armet +2', hp = 135 },
+    feet = { name = 'Chev. Sabatons +2', hp = 42 },
+    neck = { name = 'Voltsurge Torque', hp = 0 },
+    waist = { name = 'Creed Baudrier', hp = 40 },
     left_ear = { name = 'Alabaster Earring', hp = 100 },
+    right_ear = { name = 'Tuisto Earring', hp = 150 },
+    left_ring = { name = 'Defending Ring', hp = 0 },
+    right_ring = { name = 'Kishar Ring', hp = 0 },
     back = {
       name = "Rudianos's Mantle",
       augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' },
-      priority = 7,
       hp = 60,
     },
-    waist = { name = 'Creed Baudrier', hp = 40 },
-    feet = { name = 'Carmine Greaves', augments = { 'HP+60', 'MP+60', 'Phys. dmg. taken -3' }, hp = 75 },
-    left_ring = { name = "K'ayres Ring", hp = 70 },
-    neck = { name = 'Voltsurge Torque', mp = 20 },
-    right_ear = { name = 'Tuisto Earring', hp = 150 },
-    right_ring = { name = 'Kishar Ring' },
-    ammo = 'Staunch Tathlum',
   }
 
   sets.midcast = {}
   sets.midcast.full_enmity = {
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    }, -- 5
+    ammo = { name = 'Staunch Tathlum', hp = 0 },
     head = {
       name = 'Souveran Schaller',
       augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
       hp = 205,
     }, -- 7
+    body = {
+      name = 'Souveran Cuirass',
+      augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
+      hp = 146,
+    },
+    hands = {
+      name = 'Souv. Handsch. +1',
+      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
+      hp = 239,
+    }, -- 5
     legs = {
       name = 'Souv. Diechlings +1',
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
       hp = 162,
     }, -- 9
-    right_ear = { name = 'Tuisto Earring', hp = 150 },
-    body = {
-      name = 'Souveran Cuirass',
-      augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
-      priority = 10,
-      hp = 146,
-    },
-    left_ear = { name = 'Alabaster Earring', hp = 100 },
-    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
-    waist = { name = 'Creed Baudrier', hp = 40 },
-    right_ring = { name = 'Supershear Ring', hp = 30 },
     feet = {
       name = 'Eschite Greaves',
       augments = { 'Mag. Evasion+15', 'Spell interruption rate down +15%', 'Enmity+7' },
       hp = 18,
     }, -- 15
-    left_ring = { name = 'Apeile Ring', priority = 4 },
-    neck = { name = 'Moonbeam Necklace', priority = 2 },
-    ammo = { name = 'Staunch Tathlum', priority = 1 },
+    neck = { name = 'Moonbeam Necklace', hp = 0 },
+    waist = { name = 'Creed Baudrier', hp = 40 },
+    left_ear = { name = 'Alabaster Earring', hp = 100 },
+    right_ear = { name = 'Tuisto Earring', hp = 150 },
+    left_ring = { name = 'Apeile Ring', hp = 0 },
+    right_ring = { name = 'Supershear Ring', hp = 30 },
+    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
   sets.midcast.sird = {
-    hands = {
-      name = 'Souv. Handsch. +1',
-      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
-      hp = 239,
-    },
+    ammo = { name = 'Staunch Tathlum', hp = 0 },
     head = {
       name = 'Souveran Schaller',
       augments = { 'HP+80', 'Enmity+7', 'Potency of "Cure" effect received +10%' },
       hp = 205,
     },
-    right_ear = { name = 'Tuisto Earring', hp = 150 },
     body = { name = 'Chev. Cuirass +2', hp = 141 },
+    hands = {
+      name = 'Souv. Handsch. +1',
+      augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
+      hp = 239,
+    },
     legs = { name = 'Carmine Cuisses +1', augments = { 'HP+80', 'STR+12', 'INT+12' }, hp = 130 },
-    left_ear = { name = 'Alabaster Earring', hp = 100 },
-    right_ring = { name = "K'ayres Ring", hp = 70 },
-    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
-    waist = { name = 'Rumination Sash' },
     feet = {
       name = 'Odyssean Greaves',
       augments = { 'Attack+12', 'Enmity+6', 'VIT+6', 'Accuracy+3' },
       hp = 20,
     },
-    left_ring = { name = 'Defending Ring' },
-    neck = { name = 'Moonbeam Necklace' },
-    ammo = { name = 'Staunch Tathlum' },
+    neck = { name = 'Moonbeam Necklace', hp = 0 },
+    waist = { name = 'Rumination Sash', hp = 0 },
+    left_ear = { name = 'Alabaster Earring', hp = 100 },
+    right_ear = { name = 'Tuisto Earring', hp = 150 },
+    left_ring = { name = 'Defending Ring', hp = 0 },
+    right_ring = { name = "K'ayres Ring", hp = 70 },
+    back = { name = "Rudianos's Mantle", augments = { 'HP+60', 'Eva.+20 /Mag. Eva.+20', 'Enmity+10' }, hp = 60 },
   }
 
   -- +32 phalanx - with Sakpata and Priwen
@@ -273,11 +469,10 @@ function get_sets()
       augments = { 'HP+105', 'Enmity+9', 'Potency of "Cure" effect received +15%' },
       hp = 227,
     }, -- 5
-    right_ear = { name = 'Tuisto Earring', hp = 150 },
     legs = { name = "Sakpata's Cuisses", hp = 144 }, -- +5
     neck = { name = 'Sanctity Necklace', hp = 35 },
     waist = { name = 'Creed Baudrier', hp = 40 },
-    back = { name = 'Weard Mantle', augments = { 'VIT+3', 'DEX+2', 'Enmity+6', 'Phalanx +4' } },
+    back = { name = 'Weard Mantle', augments = { 'VIT+3', 'DEX+2', 'Enmity+6', 'Phalanx +4' }, hp = 40 }, -- +4
   })
   -- ###############################################################
 
@@ -320,7 +515,6 @@ function precast(spell)
   if string.match(spell.type, 'Magic$') then
     equip(sets.precast.default)
   end
-  set_priorities('hp')
 end
 
 function midcast(spell)
@@ -331,25 +525,16 @@ function midcast(spell)
   elseif spell.type == 'JobAbility' then
     equip(sets.midcast.full_enmity)
   end
-
-  set_priorities('hp')
 end
 
 function aftercast()
   refresh()
-  set_priorities('hp')
-end
-
-function status_change(new)
-  refresh()
-  set_priorities('hp')
 end
 
 function sub_job_change()
   set_macros()
   set_lockstyle()
   equip_idle()
-  set_priorities('hp')
 end
 
 function self_command(command)
